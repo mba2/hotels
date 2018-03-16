@@ -1,0 +1,138 @@
+  //CLEARFIX
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//BUTTON
+@mixin btn($radius : 0) {
+  outline: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: $radius;
+  vertical-align: top;
+}
+
+//TRANSFORMS
+@mixin transform($type) {
+  -webkit-transform: $type;
+  -ms-transform: $type;
+  transform: $type;
+}
+
+// TRANSITIONS
+@function customTrans($propName, $time: .3s, $effect: ease-in-out){
+  @return $propName $time $effect;
+}
+
+//OPACITY
+//VALUES FOR $opacity: ALWAYS USE 0-100
+// e.g   @include opacity(40)  -- THIS IS THE SAME AS : opacity(.4) OR opacity(0.4) OR opacity(0.40)
+@mixin opacity($opacity) {
+  filter : alpha(#{$opacity});  // IE OLD VERSIONS
+  opacity: $opacity * 0.01;
+}
+
+//BREAKPOINTS
+
+@mixin breakpoint($minOrMax, $width , $media: "screen"){
+    //REMOVE ONE PIXEL IF A "max" UNIT IS DESIRED
+    @if $minOrMax == max { $width : $width - 1; }
+
+    @media #{$media} AND (#{$minOrMax}-width : $width) {
+        @content;
+    }
+}
+
+
+//MENU - LINKS - HOVER
+@mixin linkHoverEffect(){
+
+  // background-color: green;
+  // transition: all .3s ease-in-out;
+
+  // &:hover {
+  //   background-color: red;
+  // }
+
+
+  position: relative;
+    // AFTER STATE FOR ALL ELEMENTS THAT RECEIVE THIS MIXIN
+    &:after {
+      width: 100%;
+      height: 100%;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      z-index: -1;
+    }
+    
+    // ODD ELEMENTS THAT RECEIVE THIS MIXIN
+    &:nth-child(2n+1) {
+      // AFTER PSUDO CLASS WHEN THIS ELEMENT IS AT ITS ORIGINAL STATE
+      &:after {
+          transition: box-shadow .5s ease-in-out;
+      }
+      // WHEN THIS ELEMENT IS HOVERED...
+      &:hover {
+          // AFTER PSUDO CLASS
+          &:after {
+            box-shadow: $pink 300px 0px inset;
+          }
+      }
+    }
+
+    // EVEN ELEMENTS THAT RECEIVE THIS MIXIN
+    &:nth-child(2n+0) {
+      
+      // AFTER PSUDO CLASS WHEN THIS ELEMENT IS AT ITS ORIGINAL STATE
+      &:after {
+          transition: box-shadow .35S ease-in-out;
+      }
+
+      //WHEN THIS ELEMENT IS HOVERED..
+      &:hover {
+        // AFTER PSUDO CLASS 
+        &:after {
+          box-shadow: $pink 0px -78px inset;
+        }
+      }
+    }
+}
+
+
+// RESUME PAGE
+@mixin groupBottomBorder {
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
+    width: 120px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: $pink;
+  }
+}
+
+@mixin subtitleBorder {
+    position: relative;
+    &:after {
+        content: "";
+        height: 3px;
+        width: 80%;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+
+        background-color: $lightBlue;
+    }
+}

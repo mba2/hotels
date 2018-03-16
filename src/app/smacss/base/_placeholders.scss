@@ -1,0 +1,11 @@
+%hideText {
+  text-indent: -9999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+%listInlineBlock {
+  li {
+    display: inline-block;
+  }
+}

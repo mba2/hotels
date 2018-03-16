@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: "Dosis", sans-serif;
+}
+
+a {
+  cursor: pointer;
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  border: none;
+  outline: none;
+}
+
+.mobileElem {
+  @include breakpoint(min, 1024px) {
+    display: none;
+  }
+}
