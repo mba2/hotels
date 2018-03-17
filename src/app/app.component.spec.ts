@@ -1,3 +1,4 @@
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         MenuComponent,
-        FooterComponent
+        FooterComponent,
+        CalendarComponent
       ],
     }).compileComponents();
   }));

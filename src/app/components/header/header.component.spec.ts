@@ -1,3 +1,4 @@
+import { CalendarComponent } from './../calendar/calendar.component';
 import { MenuComponent } from './../menu/menu.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -11,7 +12,8 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         HeaderComponent,
-        MenuComponent
+        MenuComponent,
+        CalendarComponent
       ]
     })
     .compileComponents();
