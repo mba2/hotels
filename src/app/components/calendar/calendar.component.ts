@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**  MODULES */
+import { Router } from '@angular/router';
+
 /**  CALENDAR PLUGIN */
 import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 
@@ -10,19 +13,21 @@ import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  private checkInDate;
-  private checkOutDate;
+  private checkInDate: string;
+  private checkOutDate: string;
 
+  private searchIsAllowed = false;
+
+  /** PLUGIN CONFIGURATION */
   myDateRangePickerOptions: IMyDrpOptions = {
-    monthLabels : { 
+    monthLabels : {
       1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'August', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'
     },
     dateFormat: 'dd.mmm.yyyy',
     // inline: true
   };
-;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -48,5 +53,13 @@ export class CalendarComponent implements OnInit {
 
     this.checkInDate = this.formatDate(rawCheckInDate);
     this.checkOutDate = this.formatDate(rawCheckOutDate);
+
+    this.searchIsAllowed =  true;
+  }
+
+  search() {
+    if (!this.searchIsAllowed) { return; } /** Terminate this function if the user hasn't select the dates yet */
+
+    this.router.navigateByUrl('/search');
   }
 }

@@ -1,13 +1,16 @@
 import { FormsModule } from '@angular/forms';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { BrowserModule } from '@angular/platform-browser';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { RouterModule } from '@angular/router';
+
+import { TestBed, async } from '@angular/core/testing';
+
 import { MenuComponent } from './components/menu/menu.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppComponent } from './app.component';
-
-import { TestBed, async } from '@angular/core/testing';
+import { SearchComponent } from './components/search/search.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,12 +20,14 @@ describe('AppComponent', () => {
         HeaderComponent,
         MenuComponent,
         FooterComponent,
-        CalendarComponent
+        CalendarComponent,
+        SearchComponent
       ],
       imports: [
         BrowserModule,
         FormsModule,
-        MyDateRangePickerModule
+        MyDateRangePickerModule,
+        // RouterModule
       ],
     }).compileComponents();
   }));
