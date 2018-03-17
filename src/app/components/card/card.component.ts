@@ -8,13 +8,27 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input('cardInfo') cardInfo;
 
+  private image: string;
+  private rate: number;
+  private name: string;
+  private description: string;
+  private price: string;
+  private priceHistory: [any];
 
-  private rate;
+  private onHistoryMode = false;
   
   constructor() { }
   
   ngOnInit() {
+    this.image = this.cardInfo.image;
     this.rate = this.cardInfo.rate;
+    this.name = this.cardInfo.name;
+    this.description = this.cardInfo.description;
+    this.price = this.cardInfo.price;
+    this.priceHistory = this.cardInfo.priceHistory;
   }
 
+  toggleHistoryMode(): void {
+    this.onHistoryMode = !this.onHistoryMode;
+  }
 }

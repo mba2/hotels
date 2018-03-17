@@ -17,6 +17,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { SearchComponent } from './components/search/search.component';
 import { CardComponent } from './components/card/card.component';
 
+/** PIPE */
+import { ToArrayPipe } from './custom-pipes/toArray.pipe';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { CardComponent } from './components/card/card.component';
     MenuComponent,
     CalendarComponent,
     SearchComponent,
-    CardComponent
+    CardComponent,
+    ToArrayPipe
   ],
   imports: [
     HttpModule,

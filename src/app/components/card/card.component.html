@@ -1,5 +1,39 @@
-<span>stars</span>
+<div class="card-container">
+  <img class="img" src="{{image}}" alt="Hotel Photo"/>
+</div>
 
-<span  *ngFor="let i of Array(rate).fill('icon')" >
-  <i class='start'></i>
-</span>
+<div class="card-container" *ngIf="!onHistoryMode">
+  <div class="rate">
+    <i class='icon icon--star ' *ngFor="let i of rate | toArray">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.63 25.33"><defs><style>.cls-1{fill:#ffba23;fill-rule:evenodd;}</style></defs><title>star-filled</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="13.31 21 5.09 25.33 6.66 16.16 0 9.67 9.2 8.34 13.31 0 17.43 8.34 26.63 9.67 19.97 16.16 21.54 25.33 13.31 21"/></g></g></svg>
+    </i>
+  </div>    
+  <div class="name">
+    
+  </div>
+  <div class="description">
+    
+  </div>
+  <div class="action-btns">
+    <button class="btn" disabled="disabled">Book now</button>
+    <button class="btn btn--go-price-history" (click)="toggleHistoryMode()">Price History</button>
+  </div>
+</div>
+
+<div class="card-container dynamic-info" *ngIf="!onHistoryMode">
+  <div class="total-period">Total <span>{{ 8 }}</span></div>
+  <div class="price">Total <span>{{ 8 }}</span></div>
+  <div class="price-period">Per night <span>{{ 670 }}</span></div>
+</div>
+
+<div class="card-container" *ngIf="onHistoryMode">
+  <div>Price History for {{ year }}</div>
+  <button class="btn btn--go-description-mode" (click)="toggleHistoryMode()">
+    <i class="icon"></i>
+    <span>Back to description</span>
+  </button>
+  <div class="price-history">
+    History
+
+  </div>
+</div>

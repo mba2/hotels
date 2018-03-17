@@ -13,6 +13,10 @@ a {
 button {
   border: none;
   outline: none;
+
+  &.btn {
+    border-radius: 10px;
+  }
 }
 
 .mobileElem {

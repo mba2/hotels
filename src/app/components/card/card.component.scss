@@ -1,0 +1,10 @@
+@import '~app/smacss/base/mixins';
+@import '~app/smacss/base/generics';
+
+.icon--star {
+  svg {
+    height: 12px;
+    width: 12px;
+  }
+}
+
