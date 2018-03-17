@@ -1,6 +1,9 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalendarComponent } from './calendar.component';
+import { FormsModule } from '@angular/forms';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
@@ -8,7 +11,12 @@ describe('CalendarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarComponent ]
+      declarations: [ CalendarComponent ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        MyDateRangePickerModule
+      ],
     })
     .compileComponents();
   }));

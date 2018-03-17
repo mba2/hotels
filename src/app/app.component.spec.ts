@@ -1,3 +1,6 @@
+import { FormsModule } from '@angular/forms';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
+import { BrowserModule } from '@angular/platform-browser';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,6 +18,11 @@ describe('AppComponent', () => {
         MenuComponent,
         FooterComponent,
         CalendarComponent
+      ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        MyDateRangePickerModule
       ],
     }).compileComponents();
   }));

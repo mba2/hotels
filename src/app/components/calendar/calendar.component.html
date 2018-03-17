@@ -1,3 +1,24 @@
-<p>
-  calendar works!
+<p class="title">
+  select the days to stays in Charlotte
 </p>
+<div class="calendar-info">
+  <div class="check-in">
+    <div class="calendar-info__label">check in</div>
+    {{ checkInDate || 'choose a date' }}
+  </div>
+  <div class="check-out">
+    <div class="calendar-info__label">check out</div>
+    {{ checkOutDate || 'choose a date' }}
+  </div>
+  <button class="calendar-info__search-btn">
+    Search hotels
+  </button>
+</div>
+<div class="calendar-widget">
+  <form #myForm="ngForm" novalidate>
+      <my-date-range-picker name="mydaterange" 
+          [options]="myDateRangePickerOptions"
+          [(ngModel)]="model" required
+          (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+    </form>
+</div>

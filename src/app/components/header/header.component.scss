@@ -67,7 +67,7 @@ header {
   }
 }
 
-.calendar-wrapper {
+.calendar-box {
   position: absolute;
   top: 50vw;
   width: 90vw;
@@ -75,4 +75,8 @@ header {
 
   border-radius: 5px;
   background-color: #fff;
+
+  @include breakpoint(min,"1440px") {
+    display: flex;
+  }
 }

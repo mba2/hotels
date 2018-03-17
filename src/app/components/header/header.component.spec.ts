@@ -3,6 +3,9 @@ import { MenuComponent } from './../menu/menu.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -14,7 +17,12 @@ describe('HeaderComponent', () => {
         HeaderComponent,
         MenuComponent,
         CalendarComponent
-      ]
+      ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        MyDateRangePickerModule
+      ],
     })
     .compileComponents();
   }));
