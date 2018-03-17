@@ -1,3 +1,4 @@
+import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
+        MenuComponent,
         FooterComponent
       ],
     }).compileComponents();

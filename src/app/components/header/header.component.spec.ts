@@ -28,6 +28,6 @@ describe('HeaderComponent', () => {
   });
 
   it('should has a menu component', () => {
-    expect(fixture.debugElement.nativeElement.querySelector('menu')).toBeTruthy();
+    expect(fixture.debugElement.nativeElement.querySelector('app-menu')).toBeTruthy();
   });
 });

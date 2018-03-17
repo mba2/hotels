@@ -18,12 +18,14 @@ footer {
 }
 
 .icon {
-  width: 34px;
-  height: 34px;
   display: inline-block;
   padding: 0 20px;
-
-  svg { .st0{fill:#F98100;} }
+  
+  svg { 
+    width: 34px;
+    height: 34px;
+    .st0{fill:#F98100;} 
+  }
 }
 
 .copyright {
