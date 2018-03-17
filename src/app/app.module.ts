@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { RouterModule } from '@angular/router';
+import { HttpModule} from '@angular/http';
 
 /** COMPONENTS */
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { SearchComponent } from './components/search/search.component';
+import { CardComponent } from './components/card/card.component';
 
 
 
@@ -24,9 +26,11 @@ import { SearchComponent } from './components/search/search.component';
     HeaderComponent,
     MenuComponent,
     CalendarComponent,
-    SearchComponent
+    SearchComponent,
+    CardComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     FormsModule,
     MyDateRangePickerModule,
