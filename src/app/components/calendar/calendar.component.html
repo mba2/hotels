@@ -10,7 +10,7 @@
     <div class="calendar-info__label">check out</div>
     {{ checkOutDate || 'choose a date' }}
   </div>
-  <button  class="calendar-info__search-btn" (click)="search()">
+  <button  class="calendar-info__search-btn" (click)="searchForHotels($event,this)">
     Search hotels
   </button>
 </div>

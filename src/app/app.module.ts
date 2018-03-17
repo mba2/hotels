@@ -1,3 +1,5 @@
+import { HotelService } from './services/hotel.service';
+
 /** MODULES */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,7 +34,9 @@ import { SearchComponent } from './components/search/search.component';
       { path: 'search', component: SearchComponent}
     ])
   ],
-  providers: [],
+  providers: [ 
+    HotelService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

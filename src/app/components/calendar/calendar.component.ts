@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 /**  CALENDAR PLUGIN */
 import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 
+/**  SERVICE */
+import { HotelService } from './../../services/hotel.service';
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'calendar',
@@ -27,7 +30,7 @@ export class CalendarComponent implements OnInit {
     // inline: true
   };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: HotelService) { }
 
   ngOnInit() {
   }
@@ -57,9 +60,18 @@ export class CalendarComponent implements OnInit {
     this.searchIsAllowed =  true;
   }
 
-  search() {
+  searchForHotels(e,paylaod) {
     if (!this.searchIsAllowed) { return; } /** Terminate this function if the user hasn't select the dates yet */
 
-    this.router.navigateByUrl('/search');
+    this.router.navigate(
+      ['/search'],
+      { queryParams:  
+        {
+          checkin: this.checkInDate,
+          checkout: this.checkOutDate
+        }
+      }
+    );
+    this.service.search(paylaod);
   }
 }
