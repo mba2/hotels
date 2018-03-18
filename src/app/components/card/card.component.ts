@@ -14,10 +14,10 @@ export class CardComponent implements OnInit {
   private name: string;
   private description: string;
   private price: number;
+  private higherPrice: number;
   private priceHistory: [any];
 
   private onHistoryMode = false;
-  private valuePerNight: number;
   
   constructor() { }
   
@@ -27,13 +27,30 @@ export class CardComponent implements OnInit {
     this.name = this.cardInfo.name;
     this.description = this.cardInfo.description;
     this.price = this.cardInfo.price;
-    this.priceHistory = this.cardInfo.priceHistory;
-    // this.valuePerNight = this.getValuePerNight();
+    this.priceHistory = this.cardInfo.price_history;
+    this.higherPrice = this.getHigherHistoryPrice();
   }
 
   toggleHistoryMode(): void {
     this.onHistoryMode = !this.onHistoryMode;
   }
+
+  /**
+   * @description Returns the higher price of a hotel during 2017. This 
+   * number will be used a reference to mount the chart
+  */
+  getHigherHistoryPrice(): number {
+    let prices,
+        higherPrice;
+
+    prices = this.priceHistory.map( price => {
+      return price.value;
+    });
+    higherPrice = Math.max.apply(null, prices);
+
+    return higherPrice;
+  }
+
 
   // getValuePerNight(): number {
   //   // console.log(this.price);
