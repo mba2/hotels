@@ -1,14 +1,22 @@
 <p class="title">
-  select the days to stays in Charlotte
+  Select the days to stays in Charlotte
 </p>
 <div class="calendar-info">
   <div class="check-in">
-    <div class="calendar-info__label">check in</div>
-    {{ checkInDate || 'choose a date' }}
+    <div class="calendar-info__label">
+      check in
+    </div>
+    <div class="calendar-info__date">
+      {{ checkInDate || 'Choose a date' }}
+    </div>
   </div>
   <div class="check-out">
-    <div class="calendar-info__label">check out</div>
-    {{ checkOutDate || 'choose a date' }}
+    <div class="calendar-info__label">
+      check out
+    </div>
+    <div class="calendar-info__date">
+    {{ checkOutDate || 'Choose a date' }}
+    </div>
   </div>
   <button  class="calendar-info__search-btn" (click)="searchForHotels($event,this)">
     Search hotels

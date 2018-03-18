@@ -11,7 +11,8 @@ header {
 
 .hero {
   width: 100vw;
-  height: 100vw;
+  height: 70vw;
+  max-height: 680px;
   background-image: url('../../../assets/img/hero.webp');
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,6 +29,7 @@ header {
   top: 8vw;
 
   text-align: center;
+  cursor: pointer;
 
   @include breakpoint(min,1440px) {
     top: 100px;
@@ -69,13 +71,22 @@ header {
 
 .calendar-box {
   position: absolute;
-  top: 50vw;
-  width: 90vw;
-  height: 200px;
-
+  top: 55vw;
+  width: 92vw;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 5px 0px 50px -14px #292929, -5px 0px 50px -14px #292929;
   border-radius: 5px;
+
   background-color: #fff;
 
+  text-align: center;
+
+  @include breakpoint(min,"568px") {
+    box-shadow: 10px 0px 50px -14px #292929, -10px 0px 50px -14px #292929;
+    border-radius: 5px;
+  }
   @include breakpoint(min,"1440px") {
     display: flex;
     top: 400px;

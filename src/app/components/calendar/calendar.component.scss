@@ -1,18 +1,33 @@
 @import '~app/smacss/base/mixins';
 
+%heeboFont {
+  font-family: 'Heebo', sans-serif;
+}
+
+%montSerratFont {
+  font-family: 'Montserrat', sans-serif;
+}
 
 .title {
+  margin-bottom: 20px;
+
+  @extend %montSerratFont;
   text-align: center;
+  letter-spacing: 2.5px;
+  line-height: 25px;
 }
 
 .calendar-info {
   &__search-btn {
     border: 1px solid #F98100;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #fff;
-    padding: 10px 30px;
+    padding: 15px 45px;
+    margin-bottom: 25px;
     
     color: #F98100;
+    @extend %heeboFont;
+    font-weight: bold;
     
     cursor: pointer;
     will-change: color,background-color;
@@ -27,8 +42,37 @@
     }
 
     @include breakpoint(min,"1440px") {
-      padding: 20px 50px;
-      border-radius: 50px;
+
     }
+  }
+
+  &__label {
+    margin-bottom: 10px;
+
+    @extend %heeboFont;
+    text-transform: uppercase;
+    color: #555555;
+    letter-spacing: 2.5px;
+  }
+
+  &__date {
+    margin-bottom: 20px;
+
+    @extend %heeboFont;
+    color: #B5B5B5;
+    letter-spacing: 1.82px;
+  }
+}
+
+.calendar-widget {
+  margin-bottom: 20px;
+}
+
+/*
+*  INNER ELEMENTS
+*/
+:host ::ng-deep {
+  .mydrp .selector{
+    margin: 0 auto;
   }
 }
