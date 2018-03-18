@@ -9,10 +9,10 @@
     </i>
   </div>    
   <div class="name">
-    
+    {{name}}
   </div>
   <div class="description">
-    
+    {{description}}
   </div>
   <div class="action-btns">
     <button class="btn" disabled="disabled">Book now</button>
@@ -21,9 +21,9 @@
 </div>
 
 <div class="card-container dynamic-info" *ngIf="!onHistoryMode">
-  <div class="total-period">Total <span>{{ 8 }}</span></div>
-  <div class="price">Total <span>{{ 8 }}</span></div>
-  <div class="price-period">Per night <span>{{ 670 }}</span></div>
+  <div class="total-period">Total <span>{{ nights }}</span></div>
+  <div class="price">Total <span>{{ price |  currency:'USD':'symbol':'1.0-2'}}</span></div>
+  <div class="price-period">Per night <span>{{ valuePerNight | currency:'USD':'symbol':'1.0-2'}}</span></div>
 </div>
 
 <div class="card-container" *ngIf="onHistoryMode">

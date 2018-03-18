@@ -7,15 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input('cardInfo') cardInfo;
+  @Input('nights') nights;
 
   private image: string;
   private rate: number;
   private name: string;
   private description: string;
-  private price: string;
+  private price: number;
   private priceHistory: [any];
 
   private onHistoryMode = false;
+  private valuePerNight: number;
   
   constructor() { }
   
@@ -26,9 +28,17 @@ export class CardComponent implements OnInit {
     this.description = this.cardInfo.description;
     this.price = this.cardInfo.price;
     this.priceHistory = this.cardInfo.priceHistory;
+    this.valuePerNight = this.getValuePerNight();
   }
 
   toggleHistoryMode(): void {
     this.onHistoryMode = !this.onHistoryMode;
+  }
+
+  getValuePerNight(): number {
+    // console.log(this.price);
+    // console.log(this.nights);
+    
+    return Math.round( (this.price as number) / this.nights);
   }
 }

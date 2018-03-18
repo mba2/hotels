@@ -57,7 +57,7 @@
   </div>
   <div class="result_area">
     <div class="hotel-card" *ngFor="let hotel of hotelsList">
-      <card [cardInfo]="hotel"></card>
+      <card [cardInfo]="hotel" [nights]="numberOfNights"></card>
     </div>
   </div>
 </div>

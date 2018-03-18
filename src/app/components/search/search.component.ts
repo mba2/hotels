@@ -11,8 +11,9 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit{
-  private checkInDate: any;
-  private checkOutDate: any;
+  private checkInDate: string;
+  private checkOutDate: string;
+  private numberOfNights: string;
 
   private intialHotelsList = [];
   private hotelsList = [];
@@ -22,7 +23,11 @@ export class SearchComponent implements OnInit{
     private router: Router,
     private routeInfo: ActivatedRoute,
     private service: HotelService
-  ) {}
+  ) {
+    this.checkInDate = this.routeInfo.snapshot.queryParamMap.get('checkin');
+    this.checkOutDate = this.routeInfo.snapshot.queryParamMap.get('checkout');
+    this.numberOfNights = this.routeInfo.snapshot.queryParamMap.get('nights');
+  }
 
   /**
    * @description This method will subscribe to the Action on Calendar Component. When the 
@@ -33,8 +38,10 @@ export class SearchComponent implements OnInit{
     this.service
       .onSearchMade$
       .subscribe( payload => {
+        console.log(payload);
         this.checkInDate = payload.checkInDate;
         this.checkOutDate = payload.checkOutDate;
+        this.numberOfNights = payload.numberOfNights;
       });
   }
 
@@ -68,7 +75,7 @@ export class SearchComponent implements OnInit{
     });
   }
 
-  
+
   ngOnInit() {
     this.onSearchMade();
     /**
