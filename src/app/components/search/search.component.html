@@ -3,7 +3,57 @@
     Best choices betwwen {{ checkInDate }} and {{ checkOutDate }}
   </p>
   <div class="filter_area">
-    
+    <form #filterForm="ngForm">
+      
+      <div class="rate-filter">
+        <div class="form-group">
+            <input 
+              id="stars_1"
+              type="checkbox"
+              name="1"
+              ngModel
+              (change)="filter(filterForm)">
+              <rate-label [fullStars]="1" [emptyStars]="4"></rate-label>
+          </div>
+          <div class="form-group">
+            <input 
+              id="stars_2"
+              type="checkbox"
+              name="2"
+              ngModel
+              (change)="filter(filterForm)">
+            <rate-label [fullStars]="2" [emptyStars]="3"></rate-label>
+          </div>
+          <div class="form-group">
+            <input 
+              id="stars_3"
+              type="checkbox"
+              name="3"
+              ngModel
+              (change)="filter(filterForm)">
+              <rate-label [fullStars]="3" [emptyStars]="2"></rate-label>
+          </div>
+          <div class="form-group">
+            <input 
+              id="stars_4"
+              type="checkbox"
+              name="4"
+              ngModel
+              (change)="filter(filterForm)">
+              <rate-label [fullStars]="4" [emptyStars]="1"></rate-label>
+          </div>  
+          <div class="form-group">
+            <input 
+              id="stars_5"
+              type="checkbox"
+              name="5"
+              ngModel
+              (change)="filter(filterForm)">
+              <rate-label [fullStars]="5" [emptyStars]="0"></rate-label>
+          </div>  
+      </div>
+
+    </form>                     
   </div>
   <div class="result_area">
     <div class="hotel-card" *ngFor="let hotel of hotelsList">

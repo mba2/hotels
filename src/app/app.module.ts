@@ -1,3 +1,4 @@
+import { RateLabelComponent } from './components/rate-label/rate-label.component';
 import { HotelService } from './services/hotel.service';
 
 /** MODULES */
@@ -7,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { RouterModule } from '@angular/router';
 import { HttpModule} from '@angular/http';
+
+
 
 /** COMPONENTS */
 import { AppComponent } from './app.component';
@@ -30,7 +33,8 @@ import { ToArrayPipe } from './custom-pipes/toArray.pipe';
     CalendarComponent,
     SearchComponent,
     CardComponent,
-    ToArrayPipe
+    ToArrayPipe,
+    RateLabelComponent
   ],
   imports: [
     HttpModule,
@@ -46,4 +50,8 @@ import { ToArrayPipe } from './custom-pipes/toArray.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // constructor(ngRedux: NgRedux<IAppState>){
+  //   ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  // }
+}

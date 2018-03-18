@@ -1,0 +1,24 @@
+@import '~app/smacss/base/mixins';
+@import '~app/smacss/base/generics';
+
+
+.icon--star {
+  svg {
+    height: 22px;
+    width: 22px;
+  }
+
+  &-full {
+    .cls-1{
+      fill:#ffba23;
+      fill-rule:evenodd;
+    }
+  }
+  &-empty {
+    .cls-1{
+      fill:none;
+      stroke:#ffba23;
+      fill-rule:evenodd;
+    }
+  }
+}

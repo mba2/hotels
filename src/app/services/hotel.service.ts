@@ -17,6 +17,7 @@ export class HotelService {
     this.onSearchMade$.emit(payload);
   }
 
+
   getAll() {
     const url = 'https://www.raphaelfabeni.com.br/rv/hotels.json';
 

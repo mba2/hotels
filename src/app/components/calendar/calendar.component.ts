@@ -64,13 +64,7 @@ export class CalendarComponent implements OnInit {
     if (!this.searchIsAllowed) { return; } /** Terminate this function if the user hasn't select the dates yet */
 
     this.router.navigate(
-      ['/search'],
-      { queryParams:  
-        {
-          checkin: this.checkInDate,
-          checkout: this.checkOutDate
-        }
-      }
+      ['/search']
     );
     this.service.search(paylaod);
   }
