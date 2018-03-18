@@ -2,10 +2,10 @@
   <p>
     Best choices betwwen {{ checkInDate }} and {{ checkOutDate }}
   </p>
-  <div class="filter_area">
+  <div class="filter-yarea">
     <form #filterForm="ngForm">
       <div class="price-filter">
-        <nouislider [connect]="true" name="price" [min]="100" [max]="600" [step]="1" [(ngModel)]="priceRange" (ngModelChange)="filter(filterForm)"></nouislider>
+        <nouislider [connect]="true" name="price" [min]="100" [max]="600" [step]="25" [tooltips]="[ true, true ]" style="margin-top: 4em;" [(ngModel)]="priceRange" (ngModelChange)="filter(filterForm)"></nouislider>
       </div>
       <div class="rating-filter"  ngModelGroup="ratingFilter">
         <div class="form-group">
@@ -56,7 +56,7 @@
       </div>
     </form>                     
   </div>
-  <div class="result_area">
+  <div class="result-area">
     {{noFoundHotel}}
     <p *ngIf="noFoundHotel">
       No hotel fits your criteria! Sorry!

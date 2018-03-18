@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit{
   private hotelsList = [];
   private noFoundHotel = false;
 
-  private priceRange = [100, 600];
+  private priceRange = [100, 6000];
 
 
   constructor(
@@ -55,7 +55,8 @@ export class SearchComponent implements OnInit{
   /**
    * @description This function gets the object binded to our form. Iterates over
    * it... If there's a checkbox that's 'checked' this checkbox value is pushed into 
-   * an array... Then, this array is returned
+   * an array... If no checkbox was selected we consider that all rates should appear
+   * on the result search. So an array of [1,2,3,4,5] is returned instead.
    * @param payload The info returned by an angular form
    */
   getSelectedRates(payload: any) {
@@ -67,63 +68,37 @@ export class SearchComponent implements OnInit{
         if (desiredRates[rate]) { ratingArray.push(+rate); }
       }
     }
-    return ratingArray;
+    return (ratingArray.length) ? ratingArray : [1, 2, 3, 4, 5];
   }
 
-  filterByRate(payload: any) {
+  /**
+   * @description This method will receive an object as argument(payload).
+   * Based on this 'payload', it's gonna filter the result of listed hotels! 
+   * @param payload 
+   */
+  filter(payload) {
+    /**  INITIAL VARIABLES  */
     let filteredHotelsList = [];
-    const ratingArray = this.getSelectedRates(payload);
-    /** 
-     * If no label was selected, we don't need to perform more computaion...
-     * show the origin list returned via ajax, set the flag 'noFoundHotel' as false 
-     * and terminate the function
-    */
-    if(!ratingArray.length) {
-      this.hotelsList = this.intialHotelsList;
-      this.noFoundHotel = false;
-      return;
-    }
+    const MIN = this.priceRange[0],
+          MAX = this.priceRange[1],
+    ratingArray = this.getSelectedRates(payload);
 
-    /**  
-     * GETS A COPY OF A NEW LIST OF HOTELS, FILTERED BY RATING
-    */
     filteredHotelsList = this.intialHotelsList.filter((hotel) => {
-      return ratingArray.includes(hotel.rate);
+      return (ratingArray.includes(hotel.rate)) &&
+             (hotel.price >= MIN) &&
+             (hotel.price <= MAX);
     });
-
+    
     /**  
      * IF THIS ARRAY IS EMPTY ... TERMINATE THE FUNCTION 
     */
     if (!filteredHotelsList.length) {
-      this.noFoundHotel = true; 
+      this.noFoundHotel = true;
       return false;
     } else {
       this.noFoundHotel = false;
       this.hotelsList = filteredHotelsList;
     }
-  }
-
-  filterByPrice(payload: any) {
-
-  }
-
-  /**
-   * @description This method will receive an object as argument(payload).
-   * Each property of this object is a rate. If a rate was selected by the user 
-   * it's gonna have 'true' as its value. Otherwise it's gonna have 'false'.
-   * The iteration over this object will append only the rates with 'true' as 
-   * a value into an array called 'desiredRates'!!
-   * Then the hotel list is filter...and it's gonna content only hotels with 
-   * the selected rates
-   * @param payload 
-   */
-  filter(payload) {
-    /**  INITIAL VARIABLES  */
-  
-    /**  SETS THE PRICE FILTER */
-    this.filterByPrice(payload);
-    /**  SETS THE RATE FILTER */
-    this.filterByRate(payload);
   }
 
 

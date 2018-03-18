@@ -22,8 +22,8 @@
 
 <div class="card-container dynamic-info" *ngIf="!onHistoryMode">
   <div class="total-period">Total <span>{{ nights }}</span></div>
-  <div class="price">Total <span>{{ price |  currency:'USD':'symbol':'1.0-2'}}</span></div>
-  <div class="price-period">Per night <span>{{ valuePerNight | currency:'USD':'symbol':'1.0-2'}}</span></div>
+  <div class="price">Total <span>{{ price * nights |  currency:'USD':'symbol':'1.0-2'}}</span></div>
+  <div class="price-period">Per night <span>{{ price | currency:'USD':'symbol':'1.0-2'}}</span></div>
 </div>
 
 <div class="card-container" *ngIf="onHistoryMode">

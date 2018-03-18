@@ -28,17 +28,17 @@ export class CardComponent implements OnInit {
     this.description = this.cardInfo.description;
     this.price = this.cardInfo.price;
     this.priceHistory = this.cardInfo.priceHistory;
-    this.valuePerNight = this.getValuePerNight();
+    // this.valuePerNight = this.getValuePerNight();
   }
 
   toggleHistoryMode(): void {
     this.onHistoryMode = !this.onHistoryMode;
   }
 
-  getValuePerNight(): number {
-    // console.log(this.price);
-    // console.log(this.nights);
+  // getValuePerNight(): number {
+  //   // console.log(this.price);
+  //   // console.log(this.nights);
     
-    return Math.round( (this.price as number) / this.nights);
-  }
+  //   return Math.round( (this.price as number) / this.nights);
+  // }
 }
