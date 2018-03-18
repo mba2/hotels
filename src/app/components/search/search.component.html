@@ -1,11 +1,17 @@
 <div class="search-wrapper">
-  <p>
-    Best choices betwwen {{ checkInDate }} and {{ checkOutDate }}
+  <p class="search-period">
+    Best choices between <strong class="search-period__date">{{ checkInDate }}</strong> and <strong class="search-period__date">{{ checkOutDate }}</strong>
   </p>
-  <div class="filter-yarea">
+  <div class="filters">
+    <h2 class="filters__title">
+      Filters
+    </h2>
     <form #filterForm="ngForm">
-      <div class="price-filter">
-        <nouislider [connect]="true" name="price" [min]="100" [max]="600" [step]="25" [tooltips]="[ true, true ]" style="margin-top: 4em;" [(ngModel)]="priceRange" (ngModelChange)="filter(filterForm)"></nouislider>
+      <div class="filters__price">
+        <p class="filters__price-title">
+          Price Range per <strong>night</strong>
+        </p>
+        <nouislider [connect]="true" name="price" [min]="100" [max]="600" [step]="25" [tooltips]="[ true, true ]" [(ngModel)]="priceRange" (ngModelChange)="filter(filterForm)"></nouislider>
       </div>
       <div class="rating-filter"  ngModelGroup="ratingFilter">
         <div class="form-group">

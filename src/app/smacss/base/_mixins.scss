@@ -7,6 +7,18 @@
   }
 }
 
+@mixin defaultLetterSpacing {
+  letter-spacing: 2.5px;
+}
+
+@mixin heeboFont {
+  font-family: 'Heebo', sans-serif;
+}
+
+@mixin montSerratFont {
+  font-family: 'Montserrat', sans-serif;
+}
+
 //BUTTON
 @mixin btn($radius : 0) {
   outline: none;

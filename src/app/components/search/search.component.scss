@@ -1,3 +1,5 @@
+@import '~app/smacss/base/mixins';
+
 :host ::ng-deep .icon--star {
   svg {
     height: 22px;
@@ -24,6 +26,116 @@
   padding-top: 520px;
 }
 
-.filter-area {
-  padding: 20px 50px;
+.search-period {
+  @include montSerratFont();
+  @include defaultLetterSpacing();
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 500;
+
+  &__date {
+    display: block;
+
+    color: #B5B5B5;
+  }
+}
+.filters {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+
+  &__title {
+    margin-bottom: 20px;
+    
+    @include montSerratFont();
+    @include defaultLetterSpacing();
+    font-size: 30px;
+    font-weight: 500;
+  }
+  
+  &__price {
+    padding-bottom: 60px;
+  }
+  &__price-title {
+    @include heeboFont();
+    color: #B5B5B5;
+    margin-bottom: 15px;
+  }
+}
+
+
+:host ::ng-deep {
+  nouislider {
+
+  }
+
+  .noUi-connect { 
+    background:  #F98100;
+    height: 5px;
+    top: 5px;
+  }
+  .noUi-target {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .noUi-horizontal .noUi-tooltip {
+    @include heeboFont();
+    bottom: -70px;
+    border: none;
+    left: 7px;
+    
+    color: #f9810078;
+    font-weight: 900;
+  }
+  
+  .noUi-handle {
+    border: 2px solid #F98100;
+    border-radius: 50%;
+    width: 22.51px;
+    height: 22.51px;
+    right: -13px !important;
+
+    &:after,
+    &:before { background: none; }
+  }
+
+  .noUi-handle.noUi-handle-upper {
+    &:after { 
+      position: absolute;
+      content: 'Max';
+      left: -10px;
+      top: 40px;
+      
+      color: #B5B5B5;
+    }
+    .noUi-tooltip {
+      &:after {
+        position: absolute;
+        left: -7px;
+        content: '$';
+      }
+    }
+  }
+  .noUi-handle.noUi-handle-lower {
+    &:after { 
+      content: 'Min';
+      left: 0;
+      top: 40px;
+      
+      color: #B5B5B5;
+    }
+    .noUi-tooltip {
+      left: 16px;
+      padding-left: 18px;
+
+      &:after {
+        position: absolute;
+        left: 10px;
+        content: '$';
+      }
+    }
+  }
 }

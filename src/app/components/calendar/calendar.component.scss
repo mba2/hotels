@@ -1,19 +1,12 @@
 @import '~app/smacss/base/mixins';
 
-%heeboFont {
-  font-family: 'Heebo', sans-serif;
-}
-
-%montSerratFont {
-  font-family: 'Montserrat', sans-serif;
-}
 
 .title {
   margin-bottom: 20px;
 
-  @extend %montSerratFont;
+  @include montSerratFont();
   text-align: center;
-  letter-spacing: 2.5px;
+  @include defaultLetterSpacing();
   line-height: 25px;
 }
 
@@ -26,7 +19,7 @@
     margin-bottom: 25px;
     
     color: #F98100;
-    @extend %heeboFont;
+    @include heeboFont();
     font-weight: bold;
     
     cursor: pointer;
@@ -49,7 +42,7 @@
   &__label {
     margin-bottom: 10px;
 
-    @extend %heeboFont;
+    @include heeboFont();
     text-transform: uppercase;
     color: #555555;
     letter-spacing: 2.5px;
@@ -58,7 +51,7 @@
   &__date {
     margin-bottom: 20px;
 
-    @extend %heeboFont;
+    @include heeboFont();
     color: #B5B5B5;
     letter-spacing: 1.82px;
   }
