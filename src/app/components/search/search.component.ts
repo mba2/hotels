@@ -1,8 +1,12 @@
-import { HotelService } from './../../services/hotel.service';
+/** ANGULAR'S CORE */
 import { Component, OnInit, QueryList, ContentChildren, AfterContentInit, AfterContentChecked } from '@angular/core';
+/** SERVICES */
+import { HotelService } from './../../services/hotel.service';
+/** ROUTER */
 import { Router, ActivatedRoute } from '@angular/router';
-
+/** COMPONENTS */
 import { CardComponent } from '../card/card.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,6 +21,9 @@ export class SearchComponent implements OnInit{
 
   private intialHotelsList = [];
   private hotelsList = [];
+  private noFoundHotel = false;
+
+  private priceRange = [100, 600];
 
 
   constructor(
@@ -46,6 +53,61 @@ export class SearchComponent implements OnInit{
   }
 
   /**
+   * @description This function gets the object binded to our form. Iterates over
+   * it... If there's a checkbox that's 'checked' this checkbox value is pushed into 
+   * an array... Then, this array is returned
+   * @param payload The info returned by an angular form
+   */
+  getSelectedRates(payload: any) {
+    const desiredRates = payload.value.ratingFilter,
+      ratingArray = [];
+
+    for (const rate in desiredRates) {
+      if (desiredRates.hasOwnProperty(rate)) {
+        if (desiredRates[rate]) { ratingArray.push(+rate); }
+      }
+    }
+    return ratingArray;
+  }
+
+  filterByRate(payload: any) {
+    let filteredHotelsList = [];
+    const ratingArray = this.getSelectedRates(payload);
+    /** 
+     * If no label was selected, we don't need to perform more computaion...
+     * show the origin list returned via ajax, set the flag 'noFoundHotel' as false 
+     * and terminate the function
+    */
+    if(!ratingArray.length) {
+      this.hotelsList = this.intialHotelsList;
+      this.noFoundHotel = false;
+      return;
+    }
+
+    /**  
+     * GETS A COPY OF A NEW LIST OF HOTELS, FILTERED BY RATING
+    */
+    filteredHotelsList = this.intialHotelsList.filter((hotel) => {
+      return ratingArray.includes(hotel.rate);
+    });
+
+    /**  
+     * IF THIS ARRAY IS EMPTY ... TERMINATE THE FUNCTION 
+    */
+    if (!filteredHotelsList.length) {
+      this.noFoundHotel = true; 
+      return false;
+    } else {
+      this.noFoundHotel = false;
+      this.hotelsList = filteredHotelsList;
+    }
+  }
+
+  filterByPrice(payload: any) {
+
+  }
+
+  /**
    * @description This method will receive an object as argument(payload).
    * Each property of this object is a rate. If a rate was selected by the user 
    * it's gonna have 'true' as its value. Otherwise it's gonna have 'false'.
@@ -56,23 +118,12 @@ export class SearchComponent implements OnInit{
    * @param payload 
    */
   filter(payload) {
-    const desiredRates = [];
-
-    for (const rate in payload.value) {
-      if (payload.value.hasOwnProperty(rate)) {
-        if (payload.value[rate]) { desiredRates.push(+rate);}
-      }
-    }
-
-    /** If no label was selected, just show the origin list returned via ajax and terminate the function */
-    if(!desiredRates.length) {
-      this.hotelsList = this.intialHotelsList;
-      return;
-    }
-
-    this.hotelsList = this.intialHotelsList.filter((hotel) => {
-      return desiredRates.includes(hotel.rate);
-    });
+    /**  INITIAL VARIABLES  */
+  
+    /**  SETS THE PRICE FILTER */
+    this.filterByPrice(payload);
+    /**  SETS THE RATE FILTER */
+    this.filterByRate(payload);
   }
 
 

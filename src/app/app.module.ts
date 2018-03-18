@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { RouterModule } from '@angular/router';
 import { HttpModule} from '@angular/http';
+import { NouisliderModule } from 'ng2-nouislider';
 
 
 
@@ -41,6 +42,7 @@ import { ToArrayPipe } from './custom-pipes/toArray.pipe';
     BrowserModule,
     FormsModule,
     MyDateRangePickerModule,
+    NouisliderModule,
     RouterModule.forRoot([
       { path: 'search', component: SearchComponent}
     ])

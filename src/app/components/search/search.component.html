@@ -4,8 +4,10 @@
   </p>
   <div class="filter_area">
     <form #filterForm="ngForm">
-      
-      <div class="rate-filter">
+      <div class="price-filter">
+        <nouislider [connect]="true" name="price" [min]="100" [max]="600" [step]="1" [(ngModel)]="priceRange" (ngModelChange)="filter(filterForm)"></nouislider>
+      </div>
+      <div class="rating-filter"  ngModelGroup="ratingFilter">
         <div class="form-group">
             <input 
               id="stars_1"
@@ -52,12 +54,17 @@
               <rate-label [fullStars]="5" [emptyStars]="0"></rate-label>
           </div>  
       </div>
-
     </form>                     
   </div>
   <div class="result_area">
-    <div class="hotel-card" *ngFor="let hotel of hotelsList">
-      <card [cardInfo]="hotel" [nights]="numberOfNights"></card>
+    {{noFoundHotel}}
+    <p *ngIf="noFoundHotel">
+      No hotel fits your criteria! Sorry!
+    </p>
+    <div *ngIf="!noFoundHotel">
+      <div class="hotel-card" *ngFor="let hotel of hotelsList">
+        <card [cardInfo]="hotel" [nights]="numberOfNights"></card>
+      </div>
     </div>
   </div>
 </div>
