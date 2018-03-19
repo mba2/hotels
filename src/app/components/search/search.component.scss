@@ -1,24 +1,18 @@
 @import '~app/smacss/base/mixins';
 
-:host ::ng-deep .icon--star {
-  svg {
-    height: 22px;
-    width: 22px;
-  }
 
-  &-full {
-    .cls-1{
-      fill:#ffba23;
-      fill-rule:evenodd;
-    }
-  }
-  &-empty {
-    .cls-1{
-      fill:none;
-      stroke:#ffba23;
-      fill-rule:evenodd;
-    }
-  }
+
+input[type='checkbox'] {
+  appearance: none;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #F98100;
+}
+
+input[type='checkbox']:checked {
+  box-shadow: inset 0px 0px 0px 5px #fff;
+  background-color: #F98100;
 }
 
 
@@ -40,6 +34,7 @@
     color: #B5B5B5;
   }
 }
+
 .filters {
   width: 300px;
   margin: 0 auto;
@@ -64,7 +59,16 @@
   }
 }
 
+.result-area {
+  padding: 10px;
+  text-align: center;
+}
 
+.hotel-card {
+  @include heeboFont();
+}
+
+/** VENDORS AND INNER ELEMENT/NG-CONTENT*/
 :host ::ng-deep {
   nouislider {
 
@@ -136,6 +140,27 @@
         left: 10px;
         content: '$';
       }
+    }
+  }
+}
+
+:host ::ng-deep .icon--star {
+  svg {
+    height: 22px;
+    width: 22px;
+  }
+
+  &-full {
+    .cls-1{
+      fill:#ffba23;
+      fill-rule:evenodd;
+    }
+  }
+  &-empty {
+    .cls-1{
+      fill:none;
+      stroke:#ffba23;
+      fill-rule:evenodd;
     }
   }
 }

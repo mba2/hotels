@@ -13,17 +13,111 @@
   justify-content: space-evenly;
 }
 
+
+.img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #b5b2b2;
+}
+
+.rate {
+  margin: 15px 0;
+}
+.name {
+  margin-bottom: 15px;
+  
+  color: #F98100;
+  text-transform: uppercase;
+  letter-spacing: 1.82px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.description {
+  margin-bottom: 15px;
+  
+  font-size: 17px;
+  line-height: 1.2;
+  color: #B5B5B5;
+}
+
+.action-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.btn {
+  width: 45%;
+  max-width: 180px;
+  background-color: #fff;
+  padding: 15px 45px;
+  margin-bottom: 25px;
+  border-radius: 30px;
+
+  font-weight: bold;
+  
+  cursor: pointer;
+  will-change: color,background-color;
+  -webkit-transition: color 0.3s, background-color 0.5s;
+  transition: color 0.3s, background-color 0.5s;
+  
+  &--book-me {
+    border: 1px solid #F98100;
+    color: #F98100;
+  }
+  
+  &--go-price-history {
+    color: #FFF;
+    background-color: #79BD1A;
+  }
+
+  &--go-description-mode {
+    width: auto;
+    margin: 0;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+
+    span {
+      font-size: 12px;
+      text-align: right;
+      letter-spacing: 1.36364px;
+      color: #555555;
+    }
+  }
+}
+
+.icon--go-description-mode {
+  svg {
+    display: inline-block;
+    width: 35px;
+    height: 45px;
+  }
+}
+
 .chart {
   $this: &;
+
+  margin-bottom: 30px;
   
   &__body {
     @extend %justifyEvenly;
     height: 200px;
+    border-bottom: 2px solid #D9D9D9;
   }
 
   &__labels {
     @extend %justifyEvenly;
+    display: flex;
+    align-items: center;
     height: 40px;
+    
+    font-size: 12.8px;
+    text-align: center;
+    letter-spacing: 1.45455px;
+    color: #B5B5B5;
   }
 
   &__month {
@@ -43,14 +137,17 @@
 
   &__tooltip {
     height: 20px;
+    background: #484848;
+    border-radius: 3px;
+
+    color: #FFF;
 
     opacity: 0;
     visibility: hidden;
   }
 
   &__bar {
-    height: 100px;
-    background-color: red;
+    background: linear-gradient(0deg, rgba(238, 111, 72, 0.7) 0%, rgba(249, 129, 0, 0.7) 100%);
   }  
 }
 
