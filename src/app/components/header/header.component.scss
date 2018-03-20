@@ -11,14 +11,23 @@ header {
 
 .hero {
   width: 100vw;
-  height: 70vw;
-  max-height: 680px;
-  background-image: url('../../../assets/img/hero.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 60vw;
+  max-height: 620px;
+  overflow: hidden;
+  // height: 70vw;
+  // max-height: 680px;
+  // background-image: url('../../../assets/img/hero.webp');
+  // background-repeat: no-repeat;
+  // background-size: cover;
   
-  @include breakpoint(min,1440px) {
-    height: 400px;
+  // @include breakpoint(min,1440px) {
+  //   height: 400px;
+  // }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
 }
 
@@ -31,18 +40,34 @@ header {
   text-align: center;
   cursor: pointer;
 
-  @include breakpoint(min,1440px) {
-    top: 100px;
+  @include breakpoint(min,1024px) {
+    top: 82px;
   }
+  @include breakpoint(min,1440px) {
+    top: 135px;
+  }
+
 
   /** ELEMENTS */
    &__crown {
      display: inline-block;
-     // padding: 0 20px;
+     
+    @include breakpoint(min,1440px) {
+      margin-bottom: 5px;
+    }
+
     svg {
       width: 10vw;
       height: 10vw;
 
+      @include breakpoint(min,1024px) {
+        width: 102px;
+        height: 102px;
+      }
+      @include breakpoint(min,1440px) {
+        width: 54.73px;
+        height: 43.51px;
+      }
     }
   
     .st0 { fill: #fff;}
@@ -57,6 +82,16 @@ header {
     font-weight: 600;
     font-size: 4vw;
     
+    @include breakpoint(min,1024px) {
+      font-size: 41.2px;
+    }
+    @include breakpoint(min,1440px) {
+      padding: 10px 0;
+
+      letter-spacing: 2.6px;
+      font-size: 22px;
+    }
+    
     /** MODIFIERS */
     &--main {
       padding: 10px 0;
@@ -65,6 +100,18 @@ header {
       
       font-size: 6vw;
       font-weight: bold;
+      letter-spacing: 10.6px;
+      
+      @include breakpoint(min,1024px) {
+        padding: 25px 15px;
+        
+        font-size: 61.82px;
+      }
+
+      @include breakpoint(min,1440px) {
+
+        font-size: 72px;
+      }
     }
   }
 }
@@ -75,7 +122,7 @@ header {
   width: 92vw;
   max-width: 460px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
   box-shadow: 5px 0px 50px -14px #292929, -5px 0px 50px -14px #292929;
   border-radius: 5px;
 
@@ -83,12 +130,26 @@ header {
 
   text-align: center;
 
-  @include breakpoint(min,"568px") {
+  @include breakpoint(min,568px) {
     box-shadow: 10px 0px 50px -14px #292929, -10px 0px 50px -14px #292929;
     border-radius: 5px;
   }
-  @include breakpoint(min,"1440px") {
-    display: flex;
-    top: 400px;
+
+  @include breakpoint(min,768px) {
+    top: 46vw;    
+  }
+
+  @include breakpoint(min,768px) {
+    top: 471px;    
+  }
+
+  @include breakpoint(min,1440px) {
+    top: 484px;
+    max-width: 837px;
+    height: 548px;
+    padding-top: 65px;
   }
 }
+
+
+

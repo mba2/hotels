@@ -4,18 +4,41 @@
 .title {
   margin-bottom: 20px;
 
-  @include montSerratFont();
   text-align: center;
-  @include defaultLetterSpacing();
   line-height: 25px;
+  @include montSerratFont();
+  @include defaultLetterSpacing();
+  
+  @include breakpoint(min,"1440px") {
+    width: 100%;
+    margin-bottom: 72px;
+
+    font-size: 22px;
+  }
+}
+
+.calendar {
+
+  @include breakpoint(min,"1440px") {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .calendar-info {
+  
+  @include breakpoint(min,"1440px") {
+    margin-right: 185px;
+
+    text-align: left;
+  }
+
   &__search-btn {
     border: 1px solid #F98100;
     border-radius: 30px;
     background-color: #fff;
-    padding: 15px 45px;
+    padding: 12px 45px;
     margin-bottom: 25px;
     
     color: #F98100;
@@ -35,7 +58,7 @@
     }
 
     @include breakpoint(min,"1440px") {
-
+      font-size: 15px;
     }
   }
 
@@ -46,6 +69,10 @@
     text-transform: uppercase;
     color: #555555;
     letter-spacing: 2.5px;
+
+    @include breakpoint(min,"1440px") {
+      font-size: 22px;
+    }
   }
 
   &__date {
@@ -54,6 +81,12 @@
     @include heeboFont();
     color: #B5B5B5;
     letter-spacing: 1.82px;
+
+    @include breakpoint(min,"1440px") {
+      font-size: 20px;
+
+      letter-spacing: 1.36px;
+    }
   }
 }
 
