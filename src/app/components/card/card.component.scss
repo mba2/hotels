@@ -47,12 +47,11 @@
   justify-content: space-evenly;
 }
 
-
 .btn {
   width: 45%;
   max-width: 180px;
   background-color: #fff;
-  padding: 15px 45px;
+  padding: 15px;
   margin-bottom: 25px;
   border-radius: 30px;
 
@@ -89,12 +88,83 @@
   }
 }
 
-.icon--go-description-mode {
-  svg {
+/** THIS IS AN EXCEPTION...NORMALLY I'D USER A 'BEM' MODIFIER FOR THIS BUTTON*/
+.btn-go-description-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  span {
+    margin-right: 10px;
+
+    color: #555555;
+    font-size: 12px;
+    letter-spacing: 1.36px;
+  }
+}
+
+.title {
+  &--price-history {
+    margin: 15px 0;
+
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1.82px;
+    color: #F98100;
+    text-transform: uppercase;
+  }
+}
+
+.icon {
+  &--go-description-mode {
     display: inline-block;
     width: 35px;
-    height: 45px;
+    height: 21px;
+    margin-right: 10px;
   }
+}
+
+.card {
+  padding: 30px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3686274509803922);
+  
+  @include heeboFont();
+
+  @include breakpoint(min,1024px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.total-period,
+.price,
+.price-period {
+  padding: 15px 0;
+}
+
+.price {
+
+}
+
+.price-period {
+  @include montSerratFont();
+  color: #79BD1A;
+}
+
+.total-period {
+  color: #B2B0C0;
+  font-size: 16px;
+  letter-spacing: 1.82px;
+}
+
+
+.card-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.price-history {
+
 }
 
 .chart {
@@ -147,7 +217,8 @@
   }
 
   &__bar {
-    background: linear-gradient(0deg, rgba(238, 111, 72, 0.7) 0%, rgba(249, 129, 0, 0.7) 100%);
+    background: linear-gradient(0deg, rgba(238, 111, 72, 0.7) 0%, 
+      rgba(249, 129, 0, 0.7) 100%);
   }  
 }
 

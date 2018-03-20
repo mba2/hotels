@@ -66,10 +66,8 @@
     <p *ngIf="noFoundHotel">
       No hotel fits your criteria! Sorry!
     </p>
-    <div *ngIf="!noFoundHotel">
-      <div class="hotel-card" *ngFor="let hotel of hotelsList">
-        <card [cardInfo]="hotel" [nights]="numberOfNights"></card>
-      </div>
+    <div *ngIf="!noFoundHotel" class="card-wrapper">
+      <card [cardInfo]="hotel" [nights]="numberOfNights" *ngFor="let hotel of hotelsList"></card>
     </div>
   </div>
 </div>

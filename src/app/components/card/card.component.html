@@ -1,61 +1,64 @@
-<div class="card-container">
-  <img class="img" src="{{image}}" alt="Hotel Photo"/>
-</div>
-
-<div class="card-container" *ngIf="!onHistoryMode">
-  <div class="rate">
-    <i class='icon icon--star ' *ngFor="let i of rate | toArray">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.63 25.33"><defs><style>.cls-1{fill:#ffba23;fill-rule:evenodd;}</style></defs><title>star-filled</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="13.31 21 5.09 25.33 6.66 16.16 0 9.67 9.2 8.34 13.31 0 17.43 8.34 26.63 9.67 19.97 16.16 21.54 25.33 13.31 21"/></g></g></svg>
-    </i>
-  </div>    
-  <div class="name">
-    {{name}}
-  </div>
-  <div class="description">
-    {{description}}
-  </div>
-  <div class="action-btns">
-    <button class="btn btn--book-me">Book now</button>
-    <button class="btn btn--go-price-history" (click)="toggleHistoryMode()">Price History</button>
-  </div>
-</div>
-
-<div class="card-container dynamic-info" *ngIf="!onHistoryMode">
-  <div class="total-period">Total <span>{{ nights }}</span></div>
-  <div class="price">Total <span>{{ price * nights |  currency:'USD':'symbol':'1.0-2'}}</span></div>
-  <div class="price-period">Per night <span>{{ price | currency:'USD':'symbol':'1.0-2'}}</span></div>
-</div>
-
-<div class="card-container" *ngIf="onHistoryMode">
-  <div>Price History for {{ year }}</div>
-  <div class="go-description-mode" (click)="toggleHistoryMode()">
-    <!-- <i class="icon icon--go-description-mode">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.02 16"><defs><style>.cls-1{fill:#ffba23;}</style></defs><title>back-description</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M26,7H3.41L8.71,1.71A1,1,0,0,0,7.29.29l-7,7a1,1,0,0,0,0,1.41l7,7a1,1,0,0,0,1.41-1.41L3.41,9H26a1,1,0,0,0,0-2Z"/></g></g></svg>
-    </i> -->
-    <span>
-      Back to description
-    </span> 
-    <span>
-      Back to description
-    </span> 
-  </div>
-  <div class="price-history">
-    <div class="chart">
-      <div class="chart__body">
-        <div class="chart__month" *ngFor="let price of priceHistory">
-          <div class="chart__tooltip">
-            {{ price.value | currency:'USD':'symbol':'1.0-2'}}
-          </div>
-          <div class="chart__bar"
-            [ngStyle]="{'height': 'calc(' + (price.value / higherPrice) * 100 + '%' + ' - 20px)'}"
-            ></div>
-        </div>
+<div class="card">
+  <div class="card-container">
+      <img class="img" src="{{image}}" alt="Hotel Photo"/>
+    </div>
+    
+    <div class="card-container" *ngIf="!onHistoryMode">
+      <div class="rate">
+        <i class='icon icon--star ' *ngFor="let i of rate | toArray">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.63 25.33"><defs><style>.cls-1{fill:#ffba23;fill-rule:evenodd;}</style></defs><title>star-filled</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="13.31 21 5.09 25.33 6.66 16.16 0 9.67 9.2 8.34 13.31 0 17.43 8.34 26.63 9.67 19.97 16.16 21.54 25.33 13.31 21"/></g></g></svg>
+        </i>
+      </div>    
+      <div class="name">
+        {{name}}
       </div>
-      <div class="chart__labels">
-        <div *ngFor="let price of priceHistory" class="chart__label">
-          {{ price.month }}
+      <div class="description">
+        {{description}}
+      </div>
+      <div class="action-btns">
+        <button class="btn btn--book-me">Book now</button>
+        <button class="btn btn--go-price-history" (click)="toggleHistoryMode()">Price History</button>
+      </div>
+    </div>
+    
+    <div class="card-container card-container--dynamic-info" *ngIf="!onHistoryMode">
+      <div class="total-period">
+        Total <strong>{{ nights }} nights</strong> 
+      </div>
+      <div class="price-period"><span>{{ price * nights |  currency:'USD':'symbol':'1.0-2'}}</span></div>
+      <div class="price">Per night <span>{{ price | currency:'USD':'symbol':'1.0-2'}}</span></div>
+    </div>
+    
+    <div class="card-container card-container--history" *ngIf="onHistoryMode">
+      <div class="title--price-history">
+        Price History for 2017
+      </div>
+      <div class="btn-go-description-mode" (click)="toggleHistoryMode()">
+        <span>
+          Back to description
+        </span> 
+        <i class="icon icon--go-description-mode">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.02 16"><defs><style>.cls-1{fill:#ffba23;}</style></defs><title>back-description</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M26,7H3.41L8.71,1.71A1,1,0,0,0,7.29.29l-7,7a1,1,0,0,0,0,1.41l7,7a1,1,0,0,0,1.41-1.41L3.41,9H26a1,1,0,0,0,0-2Z"/></g></g></svg>
+        </i>
+      </div>
+      <div class="price-history">
+        <div class="chart">
+          <div class="chart__body">
+            <div class="chart__month" *ngFor="let price of priceHistory">
+              <div class="chart__tooltip">
+                {{ price.value | currency:'USD':'symbol':'1.0-2'}}
+              </div>
+              <div class="chart__bar"
+                [ngStyle]="{'height': 'calc(' + (price.value / higherPrice) * 100 + '%' + ' - 20px)'}"
+                ></div>
+            </div>
+          </div>
+          <div class="chart__labels">
+            <div *ngFor="let price of priceHistory" class="chart__label">
+              {{ price.month }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>

@@ -1,7 +1,5 @@
 @import '~app/smacss/base/mixins';
 
-
-
 input[type='checkbox'] {
   appearance: none;
   display: inline-block;
@@ -17,7 +15,13 @@ input[type='checkbox']:checked {
 
 
 .search-wrapper {
-  padding-top: 520px;
+  padding-top: 560px;
+
+  @include breakpoint(min,1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 44vw;
+  }
 }
 
 .search-period {
@@ -27,6 +31,12 @@ input[type='checkbox']:checked {
   font-size: 20px;
   line-height: 40px;
   font-weight: 500;
+
+  @include breakpoint(min,1024px) {
+    width: 50%;
+    padding: 35px 90px 0;
+    border-top: 1px solid #D8D8D8;
+  }
 
   &__date {
     display: block;
@@ -39,6 +49,12 @@ input[type='checkbox']:checked {
   width: 300px;
   margin: 0 auto;
   padding: 20px;
+
+  @include breakpoint(min,1024px) {
+    width: 50%;
+    padding: 35px 90px 0;
+    border-top: 1px solid #D8D8D8;
+  }
 
   &__title {
     margin-bottom: 20px;
@@ -61,12 +77,21 @@ input[type='checkbox']:checked {
 
 .result-area {
   padding: 10px;
+  
   text-align: center;
+
+  @include breakpoint(min,1024px) {
+    width: 100%;
+  }
 }
 
-.hotel-card {
-  @include heeboFont();
+.card-wrapper {
+  
+  @include breakpoint(min,1024px) {
+    padding-top: 50px;
+  }
 }
+
 
 /** VENDORS AND INNER ELEMENT/NG-CONTENT*/
 :host ::ng-deep {

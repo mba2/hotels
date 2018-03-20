@@ -10,7 +10,9 @@ menu {
   font-family: 'Heebo', sans-serif;
   font-weight: bold;
 
-
+  @include breakpoint(min,768px) {
+    position: absolute;
+  }
 }
 
 a { color: #fff;}
@@ -55,6 +57,7 @@ li {
   height: 30px;
   background: #F98100;
   padding: 0;
+  border-bottom-right-radius: 5px;
 
   color: #fff;
   letter-spacing: 2.5px;

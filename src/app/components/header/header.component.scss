@@ -1,6 +1,5 @@
 @import '~app/smacss/base/mixins';
 
-
 header {
   position: relative;
   display: flex;
@@ -21,7 +20,6 @@ header {
     max-width: 100%;
   }
 }
-
 
 /** BLOCK */
 .logo {
@@ -100,7 +98,6 @@ header {
       }
 
       @include breakpoint(min,1440px) {
-
         font-size: 72px;
       }
     }
@@ -127,11 +124,7 @@ header {
   }
 
   @include breakpoint(min,768px) {
-    top: 46vw;    
-  }
-
-  @include breakpoint(min,768px) {
-    top: 471px;    
+    top: 45vw;   
   }
 
   @include breakpoint(min,1440px) {
