@@ -1,6 +1,11 @@
-<menu>
-  <button class="toggle_btn">
-    open
+<menu [class.is-opened]="menuIsOpened">
+  <button class="toggle-btn" (click)="toggleMenu()">
+    <span class="menu-label">
+      menu
+    </span>
+    <span class="close-label">
+      x
+    </span>
   </button>
   <ul>
     <li>

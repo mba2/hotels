@@ -1,9 +1,96 @@
+@import '~app/smacss/base/mixins';
+
 menu {
-  position: absolute;
+  position: fixed;
+  width: 100vw;
+  z-index: 180;
+  
+  color: #fff;
+  letter-spacing: 2.5px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: bold;
+
+
 }
 
 a { color: #fff;}
 
 ul {
-  display: none;
+  position: relative;
+  z-index: -1;
+
+  background: linear-gradient(0deg, rgba(238, 111, 72, 0.92) 0%, rgba(249, 129, 0, 0.97) 100%);
+  opacity: 0;
+  visibility: hidden;
+
+  will-change: opacity, visibility;
+  transition: opacity .2s .4s ease-in-out,
+    visibility .2s .4s ease-in-out;  
+
+  .is-opened & {
+    opacity: 1;
+    visibility: visible;
+  } 
+
+  @include breakpoint(min,768px) {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+
+    font-weight: normal;
+    font-size: 15px;
+  }
+}
+
+li {
+  padding: 20px;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  background: #F98100;
+  padding: 0;
+
+  color: #fff;
+  letter-spacing: 2.5px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: bold;
+
+  @include breakpoint(min,768px) {
+    display: none;
+  }
+}
+
+.menu-label {
+  position: absolute;
+  transition: opacity .3s .3s ease-in-out,
+  visibility .3s .3s ease-in-out;
+  
+  .is-opened & {
+    opacity: 0;
+    visibility: hidden;
+    
+    will-change: opacity;
+  } 
+}
+
+.close-label {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity .3s .3s ease-in-out,
+    visibility .3s .3s ease-in-out;
+
+  will-change: opacity;
+
+  .is-opened & {
+    opacity: 1;
+    visibility: visible;
+  }
 }
