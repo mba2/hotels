@@ -334,6 +334,17 @@
       padding-top: 20px;
       height: auto;
     }
+
+    @include breakpoint(min,1440px) {
+      will-change: opacity;
+      &:hover,
+      &:active {
+        > #{$this}__bar {
+          opacity: .6;
+        }
+      }
+    }
+
   }
 
   &__labels {
@@ -385,8 +396,17 @@
   }
 
   &__bar {
+    opacity: 0.5;
     background: linear-gradient(0deg, rgba(238, 111, 72, 0.7) 0%, 
       rgba(249, 129, 0, 0.7) 100%);
+
+    will-change: opacity;
+    transition: opacity .35s ease-in-out;
+
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
   }  
 }
 
