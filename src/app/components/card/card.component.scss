@@ -23,7 +23,12 @@
 
 .rate {
   margin: 15px 0;
+  
+  @include breakpoint(min,1440px) {
+    margin: 20px 0;
+  }
 }
+
 .name {
   margin-bottom: 15px;
   
@@ -32,6 +37,11 @@
   letter-spacing: 1.82px;
   font-size: 20px;
   font-weight: bold;
+  
+  @include breakpoint(min,1440px) {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
 }
 
 .description {
@@ -40,11 +50,21 @@
   font-size: 17px;
   line-height: 1.2;
   color: #B5B5B5;
+  
+  @include breakpoint(min,1440px) {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
 }
 
 .action-btns {
   display: flex;
   justify-content: space-evenly;
+
+  @include breakpoint(min,1440px) {
+    display: block;
+  }
 }
 
 .btn {
@@ -61,15 +81,33 @@
   will-change: color,background-color;
   -webkit-transition: color 0.3s, background-color 0.5s;
   transition: color 0.3s, background-color 0.5s;
+
+  @include breakpoint(min,1440px) {
+    height: 37px;
+
+    line-height: 8px;
+  }
   
   &--book-me {
     border: 1px solid #F98100;
     color: #F98100;
+
+    @include breakpoint(min,1440px) {
+      width: 115px;
+      margin-right: 15px;
+
+      font-size: 13px;
+    }
   }
   
   &--go-price-history {
     color: #FFF;
     background-color: #79BD1A;
+    
+    @include breakpoint(min,1440px) {
+      font-size: 14px;
+      width: 145px;
+    }
   }
 
   &--go-description-mode {
@@ -78,7 +116,6 @@
     max-width: none;
     display: flex;
     justify-content: center;
-
     span {
       font-size: 12px;
       text-align: right;
@@ -94,6 +131,14 @@
   align-items: center;
   justify-content: center;
   margin: 40px 0;
+  cursor: pointer;
+
+  @include breakpoint(min,1024px) {
+    width: 50%;
+    margin: 0;
+    align-self: end;
+  }
+
   span {
     margin-right: 10px;
 
@@ -112,6 +157,12 @@
     letter-spacing: 1.82px;
     color: #F98100;
     text-transform: uppercase;
+
+    @include breakpoint(min,1024px) {
+      width: 50%;
+      margin: 0;
+      align-self: end;
+    }
   }
 }
 
@@ -125,14 +176,25 @@
 }
 
 .card {
+  max-width: 380px;
+  margin: 0 auto;
   padding: 30px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3686274509803922);
+  margin-bottom: 30px;
   
   @include heeboFont();
 
   @include breakpoint(min,1024px) {
     display: flex;
-    flex-wrap: wrap;
+    max-width: 870px;
+    height: 310px;
+  }
+
+
+  @include breakpoint(min,1440px) {
+    height: 315px;
+    margin-bottom: 70px;
+    padding: 35px 0;
   }
 }
 
@@ -143,39 +205,135 @@
 }
 
 .price {
+  letter-spacing: 1.59px;
+  color: #B2B0C0;
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 3.41px;
 
+  @include breakpoint(min,1024px) {
+    font-size: 14px;  
+    letter-spacing: 1.59px;
+  }
+  
+  strong {
+    font-size: 20px;
+    color: #F98100;
+
+    @include breakpoint(min,1024px) {
+      display: block;
+      margin-top: 10px;
+    }
+  }
 }
 
 .price-period {
   @include montSerratFont();
+  letter-spacing: 3.41px;
   color: #79BD1A;
+  font-weight: bold;
+  font-size: 36px;
+
+  @include breakpoint(min,1024px) {
+    padding-top: 10px;
+    
+    font-size: 30px;
+  }
 }
 
 .total-period {
   color: #B2B0C0;
-  font-size: 16px;
+  font-size: 22px;
   letter-spacing: 1.82px;
+
+  @include breakpoint(min,1024px) {
+    font-size: 16px;
+    font-weight: 100;
+  }
 }
 
 
 .card-container {
   max-width: 400px;
   margin: 0 auto;
+  
+  &--image {
+    @include breakpoint(min,1024px) {
+      position: absolute;
+      margin-left: -75px;  
+    }
+    
+    img.is-hidden {
+      @include breakpoint(min,1024px) {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--main-info {
+    @include breakpoint(min,1024px) {
+      margin-left: 186px;
+      text-align: left;
+    }
+    
+    @include breakpoint(min,1440px) { 
+      margin: 0 0 0 200px;
+    }
+  }
+
+  &--dynamic-info {
+    @include breakpoint(min,1024px) {
+      max-width: 170px;
+      padding: 50px 0 0 45px;
+      border-left: 1px solid #D8D8D8;
+      
+      text-align: right;
+    }
+
+    @include breakpoint(min,1440px) {
+      max-width: none;
+      padding: 50px 30px 0;
+    }
+  }
+
+  &--history {
+    @include breakpoint(min,1024px) {
+      display: flex;
+      flex-wrap: wrap;
+      width: 640px;
+      max-width: none;;
+      height: 240px;
+      margin: 0 0 0 190px;
+    }
+  }
 }
 
 .price-history {
-
+  @include breakpoint(min,1024px) {
+    width: 100%;
+    height: 195px;
+  }
 }
+
 
 .chart {
   $this: &;
 
   margin-bottom: 30px;
   
+  @include breakpoint(min,1024px) {
+    margin: 0;
+  }
+  
   &__body {
     @extend %justifyEvenly;
     height: 200px;
     border-bottom: 2px solid #D9D9D9;
+
+    @include breakpoint(min,1024px) {
+      padding-top: 20px;
+      height: auto;
+    }
   }
 
   &__labels {
@@ -195,6 +353,11 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 200px;
+    width: 30px;
+    
+    @include breakpoint(min,1024px) {
+      height: 150px;
+    }
 
     &:hover  #{$this}__tooltip {
       opacity: 1;
@@ -209,11 +372,16 @@
     height: 20px;
     background: #484848;
     border-radius: 3px;
+    padding-top: 6px;
+    margin-bottom: 8px;
 
     color: #FFF;
+    font-size: 11px;
 
-    opacity: 0;
-    visibility: hidden;
+    @include breakpoint(min,1440px) {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 
   &__bar {

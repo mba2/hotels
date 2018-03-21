@@ -124,7 +124,11 @@ header {
   }
 
   @include breakpoint(min,768px) {
-    top: 45vw;   
+    top: 365px;   
+  }
+
+  @include breakpoint(min,1024px) {
+    top: 465px;   
   }
 
   @include breakpoint(min,1440px) {

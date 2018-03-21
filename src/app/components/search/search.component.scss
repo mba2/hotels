@@ -1,17 +1,18 @@
 @import '~app/smacss/base/mixins';
 
 input[type='checkbox'] {
-  appearance: none;
-  display: inline-block;
-  width: 19px;
-  height: 19px;
-  border: 1px solid #F98100;
+  display: none;
+//   appearance: none;
+//   display: inline-block;
+//   width: 19px;
+//   height: 19px;
+//   border: 1px solid #F98100;
 }
 
-input[type='checkbox']:checked {
-  box-shadow: inset 0px 0px 0px 5px #fff;
-  background-color: #F98100;
-}
+// input[type='checkbox']:checked {
+//   box-shadow: inset 0px 0px 0px 5px #fff;
+//   background-color: #F98100;
+// }
 
 
 .search-wrapper {
@@ -20,7 +21,11 @@ input[type='checkbox']:checked {
   @include breakpoint(min,1024px) {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 44vw;
+    padding-top: 470px;;
+  }
+
+  @include breakpoint(min,1440px) {
+    padding-top: 415px;
   }
 }
 
@@ -38,10 +43,20 @@ input[type='checkbox']:checked {
     border-top: 1px solid #D8D8D8;
   }
 
+  @include breakpoint(min,1440px) {
+    width: 100%;
+    border-top: none;
+    padding: 40px 0;
+  }
+
   &__date {
     display: block;
 
     color: #B5B5B5;
+
+    @include breakpoint(min,1440px) {
+      display: inline-block;
+    }
   }
 }
 
@@ -55,6 +70,13 @@ input[type='checkbox']:checked {
     padding: 35px 90px 0;
     border-top: 1px solid #D8D8D8;
   }
+  
+  @include breakpoint(min,1440px) {
+    width: 30%;   
+    margin: 0 70px 0 0;
+    border-top: none;
+    border-bottom: 1px solid #D8D8D8;
+  }
 
   &__title {
     margin-bottom: 20px;
@@ -63,12 +85,23 @@ input[type='checkbox']:checked {
     @include defaultLetterSpacing();
     font-size: 30px;
     font-weight: 500;
+
+    @include breakpoint(min,1440px) {
+      margin-bottom: 50px;
+    }
   }
   
   &__price {
     padding-bottom: 60px;
+
+    @include breakpoint(min,1440px) {
+      height: 120px;
+      padding-bottom: 0;
+      margin-bottom: 40px;
+    }
   }
-  &__price-title {
+  &__price-title,
+  &__rate-title {
     @include heeboFont();
     color: #B5B5B5;
     margin-bottom: 15px;
@@ -83,6 +116,10 @@ input[type='checkbox']:checked {
   @include breakpoint(min,1024px) {
     width: 100%;
   }
+
+  @include breakpoint(min,1440px) {
+    width: 60%;
+  }
 }
 
 .card-wrapper {
@@ -96,7 +133,13 @@ input[type='checkbox']:checked {
 /** VENDORS AND INNER ELEMENT/NG-CONTENT*/
 :host ::ng-deep {
   nouislider {
+    width: 235px;
 
+    * { @include heeboFont(); }
+
+    @include breakpoint(min,1440px) {
+      padding-left: 10px;
+    }
   }
 
   .noUi-connect { 
