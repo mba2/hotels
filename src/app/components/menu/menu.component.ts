@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  private menuIsOpened = false;
+  public menuIsOpened = false;
 
   constructor() { }
 
   /** 
    * @description A void method to show/hide the menu 
   */
-  private toggleMenu(): void {
+  toggleMenu(): void {
     this.menuIsOpened = !this.menuIsOpened;
   }
   

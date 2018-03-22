@@ -12,7 +12,7 @@ export class RateLabelComponent implements OnInit {
 
   constructor(public service: HotelService) { }
 
-  private isActive = false;
+  public isActive = false;
   
   ngOnInit() {
   }

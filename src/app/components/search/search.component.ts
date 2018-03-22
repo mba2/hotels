@@ -15,15 +15,15 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit{
-  private checkInDate: string;
-  private checkOutDate: string;
+  public checkInDate: string;
+  public checkOutDate: string;
   private numberOfNights: string;
 
   private intialHotelsList = [];
   private hotelsList = [];
-  private noFoundHotel = false;
+  public noFoundHotel = false;
 
-  private priceRange = [100, 6000];
+  public priceRange = [100, 6000];
 
 
   constructor(

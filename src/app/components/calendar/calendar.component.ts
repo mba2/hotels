@@ -16,8 +16,8 @@ import { HotelService } from './../../services/hotel.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  private checkInDate: string;
-  private checkOutDate: string;
+  public checkInDate: string;
+  public checkOutDate: string;
   private numberOfNights: number;
 
   private searchIsAllowed = false;

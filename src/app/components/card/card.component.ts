@@ -9,15 +9,15 @@ export class CardComponent implements OnInit {
   @Input('cardInfo') cardInfo;
   @Input('nights') nights;
 
-  private image: string;
-  private rate: number;
-  private name: string;
-  private description: string;
-  private price: number;
-  private higherPrice: number;
-  private priceHistory: [any];
+  public image: string;
+  public rate: number;
+  public name: string;
+  public description: string;
+  public price: number;
+  public higherPrice: number;
+  public priceHistory: [any];
 
-  private onHistoryMode = false;
+  public onHistoryMode = false;
   
   constructor() { }
   
