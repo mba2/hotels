@@ -5,3 +5,8 @@
 
 /** VENDOR STYLES */
 @import "~nouislider/distribute/nouislider.min.css";
+
+
+search + app-footer footer { 
+  margin-top: 10px !important;
+}
