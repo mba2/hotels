@@ -67,7 +67,17 @@ export class CalendarComponent implements OnInit {
     }
 
 
-
+    /**
+     * If the clicked day is lower than the current Checkin Date
+     */
+    if (day.rawDate.getTime() <= this.checkInDate.rawDate.getTime()) {
+      // Resets the current Checkin Date
+      this.checkInDate.isCheckIn = false;
+      // The clicked day becames the new Checkin Date
+      day.isCheckIn = true;
+      this.checkInDate = day;
+      return;
+    }
 
     if ( this.checkInDate &&
          day !== this.checkInDate) {
@@ -92,12 +102,7 @@ export class CalendarComponent implements OnInit {
     //   return;
     // }
 
-    // /** AT THIS POINT, ONE DAY IS ALREADY SELECTED...*/
-    // if(d.rawDate.getTime() <= this.checkInDate.rawDate.getTime()) {
-    //   d.isSelected =  true;
-    //   this.checkInDate.isSelected = false;
-    //   this.checkInDate = d;
-    // }else {
+
     //   d.isSelected =  true;
     //   this.checkOutDate = d;
     //   // this.checkOutDate.isSelected = true;
