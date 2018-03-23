@@ -136,19 +136,6 @@ export class CalendarComponent implements OnInit {
     return `${month} ${day},${year}`;
   }
 
-  // onDateRangeChanged(event: IMyDateRangeModel): void {
-  //   if (!event.formatted) { return; } /** If this string is empty...terminate the function */
-
-  //   const dates = event.formatted.split('-'); /** SEPARATE CHECKIN AND CHECKOUT DATES AND STORE THEM*/
-  //   const rawCheckInDate = dates[0];
-  //   const rawCheckOutDate = dates[1];
-
-  //   this.checkInDate = this.formatDate(rawCheckInDate);
-  //   this.checkOutDate = this.formatDate(rawCheckOutDate);
-  //   this.numberOfNights = this.getNumberOfNights(event);
-
-  //   this.searchIsAllowed =  true;
-  // }
 
   searchForHotels(e,payload) {
     if (!this.searchIsAllowed) { return; } /** Terminate this function if the user hasn't select the dates yet */

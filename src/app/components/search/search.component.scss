@@ -115,6 +115,28 @@ input[type="checkbox"] { display: none;}
   @include breakpoint(min,1440px) {
     width: 59%;
   }
+
+  &__no-matches {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #B5B5B5;
+
+    @include breakpoint(min,1440px) {
+      font-size: 20px;
+    }
+
+    i {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+    }
+    svg {
+      path { fill: #EA8010;}
+    }
+  }
 }
 
 .card-wrapper {

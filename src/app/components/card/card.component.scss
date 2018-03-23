@@ -368,6 +368,7 @@
     
     @include breakpoint(min,1024px) {
       height: 150px;
+      width: 40px;
     }
 
     &:hover  #{$this}__tooltip {
@@ -387,7 +388,12 @@
     margin-bottom: 8px;
 
     color: #FFF;
-    font-size: 11px;
+    font-size: 10px;
+    
+    @include breakpoint(min,1024px) {
+      font-size: 11px;
+      height: 23px;
+    }
 
     @include breakpoint(min,1440px) {
       opacity: 0;
