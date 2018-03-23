@@ -1,27 +1,18 @@
 @import '~app/smacss/base/mixins';
 
-input[type='checkbox'] {
-  display: none;
-//   appearance: none;
-//   display: inline-block;
-//   width: 19px;
-//   height: 19px;
-//   border: 1px solid #F98100;
-}
-
-// input[type='checkbox']:checked {
-//   box-shadow: inset 0px 0px 0px 5px #fff;
-//   background-color: #F98100;
-// }
-
+input[type="checkbox"] { display: none;}
 
 .search-wrapper {
-  padding-top: 560px;
+  padding-top: 665px;
+
+  @include breakpoint(min,768px) {
+    padding-top: 530px;
+  }
 
   @include breakpoint(min,1024px) {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 470px;;
+    padding-top: 520px;;
   }
 
   @include breakpoint(min,1440px) {

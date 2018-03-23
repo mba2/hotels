@@ -28,7 +28,7 @@
   &__dates {
   
     @include breakpoint(min,"1440px") {
-      margin-right: 185px;
+      margin: 0 auto;
 
       text-align: left;
     }
@@ -111,17 +111,15 @@
   }
 
   &__widget {
-    width: 100%;
-    max-width: 350px;
+    max-width: 250px;
     height: 320px;
     margin: 0 auto;
     margin-bottom: 20px;
-    // background: red;
   }
 
   &__week {
     display: flex;
-    justify-content: space-aroung;
+    justify-content: space-around;
     margin: 10px 0;
   }
 

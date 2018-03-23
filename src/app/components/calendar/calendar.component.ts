@@ -25,8 +25,8 @@ export class CalendarComponent implements OnInit {
   public checkInDate: DayComponent;
   public checkOutDate: DayComponent;
   private numberOfNights: number;
-  private currentYear = 2017;
-  private currentMonth = 'August';
+  public currentYear = 2017;
+  public currentMonth = 'August';
   private searchIsAllowed = false;
 
   constructor(private router: Router, private service: HotelService) { }
@@ -47,84 +47,94 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  test(day: DayComponent) {
-    this.currentDay = day;
+  setCheckIn() {
+    this.currentDay.isCheckIn = true;
+    this.checkInDate = this.currentDay;
+  }
 
+  updateCheckIn() {
+    // Resets the current Checkin Date
+    this.checkInDate.isCheckIn = false;
+    // The clicked day becames the new Checkin Date
+    this.currentDay.isCheckIn = true;
+    this.checkInDate = this.currentDay;
+  }
+
+  setCheckOut() {
+    this.checkInDate.isCheckInWithRange = true; // set a flag to indicate the 
+    this.currentDay.isCheckOut = true;
+    this.checkOutDate = this.currentDay; // toggle the day
+    this.setRange();         // set all range
+    this.searchIsAllowed =  true;
+    this.numberOfNights = this.getNumberOfNights();
+  }
+
+  resetCalendar() {
+    //Reset the previous choices and its attributes!!
+    this.checkInDate = this.checkInDate.isCheckIn = this.checkInDate.isCheckInWithRange = null;
+    this.checkOutDate = this.checkOutDate.isCheckOut = null;
+    // The clicked day becomes the Check In Date!!
+    this.currentDay.isCheckIn = true;
+    this.checkInDate = this.currentDay;
+    //disable range
+    this.resetRange();
+  }
+
+  selectDay(day: DayComponent) {
+    this.currentDay = day;
     /** 
      * IF THIS CONDITION IS TRUE... THEN IT`S THE USER`S FIRST CLICK ...
      * SET THE CLICKED DAY AS CHECKIN AND TERMINATE THE FUNCTION
     * */
-    if ( !this.checkInDate
-        && !this.checkOutDate) {
-        this.currentDay.isCheckIn = true;
-        this.checkInDate = this.currentDay;
-        console.log(this.currentDay);
+    if ( !this.checkInDate &&
+         !this.checkOutDate) {
+      this.setCheckIn();
       return;
     }
-
     /**
      * IF two day are selected... 
     */
     if (this.checkInDate &&
-      this.checkOutDate) {
-      //Reset the previous choices and its attributes!!
-      this.checkInDate = this.checkInDate.isCheckIn = this.checkInDate.isCheckInWithRange = null;
-      this.checkOutDate = this.checkOutDate.isCheckOut = null;
-      // The clicked day becomes the Check In Date!!
-      day.isCheckIn = true;
-      this.checkInDate = day;
-      //disable range
-      this.resetRange();
+        this.checkOutDate) {
+        this.resetCalendar();
       return;
     }
-
     /**
      * If the clicked day is lower than the current Checkin Date
      */
-    if (day.rawDate.getTime() <= this.checkInDate.rawDate.getTime()) {
-      // Resets the current Checkin Date
-      this.checkInDate.isCheckIn = false;
-      // The clicked day becames the new Checkin Date
-      day.isCheckIn = true;
-      this.checkInDate = day;
+    if (this.currentDay.rawDate.getTime() <= this.checkInDate.rawDate.getTime()) {
+      this.updateCheckIn();
       return;
     }
-
     /**
      * If we already have a  Checkin Date and the clicked day is greater than than the Checkin Date
      * We can set the Checkout Date
     */
     if ( this.checkInDate &&
-      day !== this.checkInDate) {
-      this.checkInDate.isCheckInWithRange = true; // set a flag to indicate the 
-      day.isCheckOut = true;
-      this.checkOutDate = day; // toggle the day
-      this.setRange();         // set all range
+      this.currentDay !== this.checkInDate) {
+      this.setCheckOut();
       return;
     }
-
   }
 
-  // getNumberOfNights(event: IMyDateRangeModel): number {
-  //   const beginDate = new Date(event.beginJsDate);
-  //   const endDate = new Date(event.endJsDate);
+  getNumberOfNights(): number {
+    const beginDate = new Date(this.checkInDate.rawDate.getTime());
+    const endDate = new Date(this.checkOutDate.rawDate.getTime());
 
-  //   let nights = (endDate as any) - (beginDate as any); /** Just asserting the ts lint!! */
-  //     nights = (nights / 1000 / 60 / 60 / 24) + 1;
-  //     return nights;
-  // }
+    let nights = (endDate as any) - (beginDate as any); /** Just asserting the ts lint!! */
+      nights = (nights / 1000 / 60 / 60 / 24) + 1;
+      return nights;
+  }
 
-  // private formatDate(rawDate: any): string {
-  //   if (!rawDate) { return; } /** If this string is empty...terminate the function */
+  private formatDate(date: DayComponent): string {
+    if (!date) { return; } /** If this string is empty...terminate the function */
 
-  //   const date = rawDate.split('.'); /** SEPARATE DAY, MONTH AND YEAR */
+    const day = date.day;
+    const month = date.month;
+    const year = date.year;
 
-  //   const day = date[0];
-  //   const month = date[1];
-  //   const year = date[2];
-
-  //   return `${month} ${day},${year}`;
-  // }
+    return `${month} ${day},${year}`;
+  }
 
   // onDateRangeChanged(event: IMyDateRangeModel): void {
   //   if (!event.formatted) { return; } /** If this string is empty...terminate the function */
@@ -147,12 +157,16 @@ export class CalendarComponent implements OnInit {
       ['/search'],
       {
         queryParams : {
-          checkin: this.checkInDate,
-          checkout: this.checkOutDate,
-          nights: this.numberOfNights 
+          checkin: this.formatDate(this.checkInDate),
+          checkout: this.formatDate(this.checkOutDate),
+          nights: this.numberOfNights
         }
       }
     );
-    this.service.search(payload);
+    this.service.search({
+      checkInDate : this.formatDate(this.checkInDate),
+      checkOutDate : this.formatDate(this.checkOutDate),
+      numberOfNights : this.numberOfNights
+    });
   }
 }

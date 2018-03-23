@@ -3,11 +3,10 @@
 footer {    
   padding: 15px 10px 0;
   box-shadow: 0px -2px 11px #e6e6e6;
-  margin-top: 550px;
+  margin-top: 655px;
   
   @include breakpoint(min,768px) {
-    margin-top: 450px;
-
+    margin-top: 530px;
   }
 }
 

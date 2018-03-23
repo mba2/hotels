@@ -18,7 +18,8 @@ menu {
 a { color: #fff;}
 
 ul {
-  position: relative;
+  position: absolute;
+  width: 100vw;
   z-index: -1;
 
   background: linear-gradient(0deg, rgba(238, 111, 72, 0.92) 0%, rgba(249, 129, 0, 0.97) 100%);
