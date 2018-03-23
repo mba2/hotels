@@ -45,7 +45,6 @@ export class SearchComponent implements OnInit{
     this.service
       .onSearchMade$
       .subscribe( payload => {
-        console.log(payload);
         this.checkInDate = payload.checkInDate;
         this.checkOutDate = payload.checkOutDate;
         this.numberOfNights = payload.numberOfNights;

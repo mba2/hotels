@@ -8,15 +8,37 @@
         check in
       </div>
       <div class="calendar-info__date">
-        {{ checkInDate || 'Choose a date' }}
+        <span *ngIf="!checkInDate">
+          Choose a date
+        </span>
+          <span>
+            {{ checkInDate?.month }}
+          </span>
+          <span>
+            <strong> {{ checkInDate?.day }},</strong>
+          </span>
+          <span>
+            {{ checkInDate?.year }}
+          </span>
       </div>
     </div>
     <div class="check-out">
       <div class="calendar-info__label">
-        check out
+        <span *ngIf="!checkOutDate">
+          Choose a date
+        </span>
+        <span>
+          {{ checkOutDate?.month }}
+        </span>
+        <span>
+          <strong> {{ checkOutDate?.day }},</strong>
+        </span>
+        <span>
+          {{ checkOutDate?.year }}
+        </span>
       </div>
       <div class="calendar-info__date">
-      {{ checkOutDate || 'Choose a date' }}
+      {{ checkOutDate?.day || 'Choose a date' }}
       </div>
     </div>
     <button  class="calendar-info__search-btn" (click)="searchForHotels($event,this)">
@@ -24,11 +46,40 @@
     </button>
   </div>
   <div class="calendar-widget">
-    <form #myForm="ngForm" novalidate>
-        <my-date-range-picker name="mydaterange" 
-          [options]="myDateRangePickerOptions"
-          required
-          (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
-      </form>
+    <div class="month">
+      <div class="week">
+        <day #day_1 (click)="test(day_1)" [config]='[8,1,2018]'></day>
+        <day #day_2 (click)="test(day_2)" [config]='[8,2,2018]'></day>
+        <day #day_3 (click)="test(day_3)" [config]='[8,3,2018]'></day>
+      </div>
+      <div class="week">
+        <day #day_4 (click)="test(day_4)" [config]='[8,4,2018]'></day>
+        <day #day_5 (click)="test(day_5)" [config]='[8,5,2018]'></day>
+        <day #day_6 (click)="test(day_6)" [config]='[8,6,2018]'></day>
+        <day #day_7 (click)="test(day_7)" [config]='[8,7,2018]'></day>
+        <day #day_8 (click)="test(day_8)" [config]='[8,8,2018]'></day>
+        <day #day_9 (click)="test(day_9)" [config]='[8,9,2018]'></day>
+        <day #day_10 (click)="test(day_10)" [config]='[8,10,2018]'></day>
+      </div>
+      <div class="week">
+        <day #day_11 (click)="test(day_11)" [config]='[8,11,2018]'></day>
+        <day #day_12 (click)="test(day_12)" [config]='[8,12,2018]'></day>
+        <day #day_13 (click)="test(day_13)" [config]='[8,13,2018]'></day>
+        <day #day_14 (click)="test(day_14)" [config]='[8,14,2018]'></day>
+        <day #day_15 (click)="test(day_15)" [config]='[8,15,2018]'></day>
+        <day #day_16 (click)="test(day_16)" [config]='[8,16,2018]'></day>
+        <day #day_17 (click)="test(day_17)" [config]='[8,17,2018]'></day>
+      </div>
+      <div class="week">
+        <day #day_18 (click)="test(day_18)" [config]='[8,18,2018]'></day>
+        <day #day_19 (click)="test(day_19)" [config]='[8,19,2018]'></day>
+        <day #day_20 (click)="test(day_20)" [config]='[8,20,2018]'></day>
+        <day #day_21 (click)="test(day_21)" [config]='[8,21,2018]'></day>
+        <day #day_22 (click)="test(day_22)" [config]='[8,22,2018]'></day>
+        <day #day_23 (click)="test(day_23)" [config]='[8,23,2018]'></day>
+        <day #day_24 (click)="test(day_24)" [config]='[8,24,2018]'></day>
+      </div>
+    </div>
   </div>
 </div>  
+

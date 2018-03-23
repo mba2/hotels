@@ -1,11 +1,9 @@
-import { RateLabelComponent } from './components/rate-label/rate-label.component';
 import { HotelService } from './services/hotel.service';
 
 /** MODULES */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { RouterModule } from '@angular/router';
 import { HttpModule} from '@angular/http';
 import { NouisliderModule } from 'ng2-nouislider';
@@ -20,6 +18,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { SearchComponent } from './components/search/search.component';
 import { CardComponent } from './components/card/card.component';
+import { RateLabelComponent } from './components/rate-label/rate-label.component';
+import { DayComponent } from './components/day/day.component';
 
 /** PIPE */
 import { ToArrayPipe } from './custom-pipes/toArray.pipe';
@@ -35,13 +35,13 @@ import { ToArrayPipe } from './custom-pipes/toArray.pipe';
     SearchComponent,
     CardComponent,
     ToArrayPipe,
-    RateLabelComponent
+    RateLabelComponent,
+    DayComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     FormsModule,
-    MyDateRangePickerModule,
     NouisliderModule,
     RouterModule.forRoot([
       { path: 'search', component: SearchComponent}
