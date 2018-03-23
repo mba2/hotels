@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DayComponent implements OnInit {
 
-  @Input('config') config;
+  @Input('config') config = null;
 
   public rawDate: Date;
   
@@ -19,6 +19,7 @@ export class DayComponent implements OnInit {
   
   public inRange = false;
   public isCheckIn = false;
+  public isCheckInWithRange = false;
   public isCheckOut = false;
 
   constructor() { }
@@ -32,8 +33,6 @@ export class DayComponent implements OnInit {
     this.day = this.rawDate.getDate();
     this.month = this.months_arr[this.rawDate.getMonth()];
     this.year= this.rawDate.getFullYear();
-
-    // console.log(this.full_date_string.toString())
   }
 
   ngOnInit() {

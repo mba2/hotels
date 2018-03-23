@@ -1,11 +1,12 @@
-<div class="day" [ngClass]="{ 
+<div class="day" [attr.data-value]="day" [ngClass]="{ 
     'in-range' : inRange, 
     'check-in' : isCheckIn,
+    'check-in-with-range' : isCheckInWithRange,
     'check-out' : isCheckOut }">
-  <!-- <div class="day__label">
+  <div class="day__label">
     {{ day }}
-  </div> -->
-  {{ month }} - {{ day }} - {{ year }} - {{ isSelected }}
+  </div>
+  <!-- {{ month }} - {{ day }} - {{ year }} - {{ isSelected }} -->
 </div>
 
 

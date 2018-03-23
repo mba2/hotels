@@ -1,10 +1,51 @@
-.day.check-in {
-  color: red;
-}
-.day.check-out {
-  color: gold;
-}
+.day {
+  font-size: 15px;
+  display: block;
+  
+  color: #555555;
 
-.day.in-range {
-  color: green;
+  &.check-in,
+  &.check-out,
+  &.in-range {
+    background: #79BD1A;
+    border-radius: 50%;
+    color: #FFF;
+  }
+
+
+  &.check-in-with-range {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+  }
+
+  &.check-out {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background-color: #fff;
+      top: 2px;
+      right: 2px;
+      border-radius: 50%;
+
+    }
+    &:before {
+      content: attr(data-value);
+      position: absolute;            
+      color: #79BD1A;
+      z-index: 2;
+      left: 8px;
+    }
+  }
+
+  &.in-range {
+    border-radius: 0;
+  }
 }

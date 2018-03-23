@@ -1,22 +1,6 @@
 @import '~app/smacss/base/mixins';
 
 
-.title {
-  margin-bottom: 20px;
-
-  text-align: center;
-  line-height: 25px;
-  @include montSerratFont();
-  @include defaultLetterSpacing();
-  
-  @include breakpoint(min,"1440px") {
-    width: 100%;
-    margin-bottom: 72px;
-
-    font-size: 22px;
-  }
-}
-
 .calendar {
 
   @include breakpoint(min,"1440px") {
@@ -24,14 +8,30 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-}
 
-.calendar-info {
+  &__title {
+    margin-bottom: 20px;
   
-  @include breakpoint(min,"1440px") {
-    margin-right: 185px;
+    text-align: center;
+    line-height: 25px;
+    @include montSerratFont();
+    @include defaultLetterSpacing();
+    
+    @include breakpoint(min,"1440px") {
+      width: 100%;
+      margin-bottom: 72px;
+  
+      font-size: 22px;
+    }
+  }
 
-    text-align: left;
+  &__dates {
+  
+    @include breakpoint(min,"1440px") {
+      margin-right: 185px;
+
+      text-align: left;
+    }
   }
 
   &__search-btn {
@@ -73,6 +73,27 @@
     @include breakpoint(min,"1440px") {
       font-size: 22px;
     }
+
+    &--month-year {
+      padding: 15px 0;
+      border-top: 1px solid #E3E3E3;
+      
+      @include heeboFont();
+      font-size: 15.8px;
+      letter-spacing: 1.8px;
+      color: #555555;
+    }
+    &--weeks{
+      display: flex;
+      justify-content: space-evenly;
+      padding: 15px 0;
+      border-bottom: 1px solid #E3E3E3;
+
+      @include heeboFont();
+      font-size: 15px;
+      text-transform: uppercase; 
+      color: #B5B5B5;
+    }
   }
 
   &__date {
@@ -88,11 +109,35 @@
       letter-spacing: 1.36px;
     }
   }
+
+  &__widget {
+    width: 100%;
+    max-width: 350px;
+    height: 320px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    // background: red;
+  }
+
+  &__week {
+    display: flex;
+    justify-content: space-aroung;
+    margin: 10px 0;
+  }
+
+  day, .day {
+    width: 40px;
+    height: 40px;
+    
+    cursor: pointer;
+    line-height: 40px;
+    text-align: center;
+    @include heeboFont();
+    font-size: 15px;
+  }
 }
 
-.calendar-widget {
-  margin-bottom: 20px;
-}
+
 
 /*
 *  INNER ELEMENTS

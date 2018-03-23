@@ -22,12 +22,11 @@ export class CalendarComponent implements OnInit {
   @ViewChildren(DayComponent) days: QueryList<DayComponent>;
   
   private currentDay: DayComponent;
-  private checkInDate: DayComponent;
-  private checkOutDate: DayComponent;
+  public checkInDate: DayComponent;
+  public checkOutDate: DayComponent;
   private numberOfNights: number;
-
-  
-  
+  private currentYear = 2017;
+  private currentMonth = 'August';
   private searchIsAllowed = false;
 
   constructor(private router: Router, private service: HotelService) { }
@@ -35,7 +34,18 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
   }
 
+  resetRange(): void {
+    this.days.forEach(day => day.inRange = false);
+  }
 
+  setRange(): void {
+    this.days.forEach(day => {
+      if (day.rawDate > this.checkInDate.rawDate &&
+        day.rawDate < this.checkOutDate.rawDate) {
+          day.inRange = true;
+        }
+    });
+  }
 
   test(day: DayComponent) {
     this.currentDay = day;
@@ -45,7 +55,7 @@ export class CalendarComponent implements OnInit {
      * SET THE CLICKED DAY AS CHECKIN AND TERMINATE THE FUNCTION
     * */
     if ( !this.checkInDate
-        && !this.checkOutDate) {      
+        && !this.checkOutDate) {
         this.currentDay.isCheckIn = true;
         this.checkInDate = this.currentDay;
         console.log(this.currentDay);
@@ -57,15 +67,16 @@ export class CalendarComponent implements OnInit {
     */
     if (this.checkInDate &&
       this.checkOutDate) {
-      //Reset the previous choices!!
-      this.checkInDate = this.checkInDate.isCheckIn  = null;
+      //Reset the previous choices and its attributes!!
+      this.checkInDate = this.checkInDate.isCheckIn = this.checkInDate.isCheckInWithRange = null;
       this.checkOutDate = this.checkOutDate.isCheckOut = null;
       // The clicked day becomes the Check In Date!!
       day.isCheckIn = true;
       this.checkInDate = day;
-        //disable range
+      //disable range
+      this.resetRange();
+      return;
     }
-
 
     /**
      * If the clicked day is lower than the current Checkin Date
@@ -79,36 +90,18 @@ export class CalendarComponent implements OnInit {
       return;
     }
 
+    /**
+     * If we already have a  Checkin Date and the clicked day is greater than than the Checkin Date
+     * We can set the Checkout Date
+    */
     if ( this.checkInDate &&
-         day !== this.checkInDate) {
-      console.log('setting a checkout');
+      day !== this.checkInDate) {
+      this.checkInDate.isCheckInWithRange = true; // set a flag to indicate the 
       day.isCheckOut = true;
       this.checkOutDate = day; // toggle the day
-                               // all range
+      this.setRange();         // set all range
       return;
     }
-
-
-
-    // if(d === this.checkInDate) {
-    //   this.unselectDay(d);
-    //   this.checkInDate = null;
-    //   return;
-    // }
-
-    // if(d === this.checkOutDate) {
-    //   this.unselectDay(d);
-    //   this.checkOutDate = null;
-    //   return;
-    // }
-
-
-    //   d.isSelected =  true;
-    //   this.checkOutDate = d;
-    //   // this.checkOutDate.isSelected = true;
-    // }
-
-    console.log('no if was found: ');
 
   }
 
