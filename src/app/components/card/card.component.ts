@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
@@ -30,7 +31,10 @@ export class CardComponent implements OnInit {
     this.priceHistory = this.cardInfo.price_history;
     this.higherPrice = this.getHigherHistoryPrice();
   }
-
+  
+  /**
+   * @description This function is responsable to show or hide the History price modal
+  */
   toggleHistoryMode(): void {
     this.onHistoryMode = !this.onHistoryMode;
   }
@@ -50,12 +54,4 @@ export class CardComponent implements OnInit {
 
     return higherPrice;
   }
-
-
-  // getValuePerNight(): number {
-  //   // console.log(this.price);
-  //   // console.log(this.nights);
-    
-  //   return Math.round( (this.price as number) / this.nights);
-  // }
 }

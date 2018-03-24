@@ -13,6 +13,7 @@ import { HotelService } from './../../services/hotel.service';
 import { DayComponent } from '../day/day.component';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
@@ -37,6 +38,7 @@ export class CalendarComponent implements OnInit {
   resetRange(): void {
     this.days.forEach(day => day.inRange = false);
   }
+
 
   setRange(): void {
     this.days.forEach(day => {
@@ -70,7 +72,7 @@ export class CalendarComponent implements OnInit {
   }
 
   resetCalendar() {
-    //Reset the previous choices and its attributes!!
+    // Reset the previous choices and its attributes!!
     this.checkInDate = this.checkInDate.isCheckIn = this.checkInDate.isCheckInWithRange = null;
     this.checkOutDate = this.checkOutDate.isCheckOut = null;
     // The clicked day becomes the Check In Date!!
